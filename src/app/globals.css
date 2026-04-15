@@ -1,21 +1,48 @@
 @import "tailwindcss";
 
+/* ─── LegisFlow Brutalista Palette ───────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F2EC;
+  --foreground: #0A0A0A;
+  --accent-green: #2D6A4F;
+  --border-ink: #0A0A0A;
 }
 
+/* ─── Tailwind Theme Extension ───────────────────────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: #0A0A0A;
+  --color-off-white: #F5F2EC;
+  --color-verde: #2D6A4F;
+
+  /* Font families driven by next/font CSS vars */
+  --font-headline: var(--font-bebas);
+  --font-ui: var(--font-archivo);
+  --font-terminal: var(--font-space-mono);
+
+  /* Legacy geist vars kept for root layout */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Marquee animation */
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee-slow: marquee 60s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── Bento grid (desktop only) ──────────────────────────── */
+@media (min-width: 768px) {
+  .legis-bento {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 340px 340px;
+    grid-template-areas:
+      "b1 b1 b3"
+      "b2 b4 b3";
   }
 }
 
