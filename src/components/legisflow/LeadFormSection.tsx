@@ -98,8 +98,8 @@ export default function LeadFormSection() {
             $ legisflow --schedule-demo --priority=high
             <motion.span
               className="inline-block w-2 h-4 bg-verde align-middle"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ repeat: Infinity, duration: 1.1, ease: "steps(1)" }}
+              animate={{ opacity: [1, 1, 0, 0, 1] }}
+              transition={{ repeat: Infinity, duration: 1.1, ease: "linear", times: [0, 0.49, 0.5, 0.99, 1] }}
             />
           </p>
           <h2

@@ -1,7 +1,7 @@
 "use client";
 
+import { memo, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -142,7 +142,8 @@ interface BentoCardProps {
   inView: boolean;
 }
 
-function BentoCard({ title, subtitle, children, accent = false, gridArea, delay = 0, inView }: BentoCardProps) {
+// Memoized — pure presentational component; skips re-render unless props change (rerender-memo)
+const BentoCard = memo(function BentoCard({ title, subtitle, children, accent = false, gridArea, delay = 0, inView }: BentoCardProps) {
   return (
     <motion.div
       style={{ gridArea }}
@@ -170,7 +171,7 @@ function BentoCard({ title, subtitle, children, accent = false, gridArea, delay 
       <div className="flex-1 overflow-hidden">{children}</div>
     </motion.div>
   );
-}
+});
 
 // ─── Main component ────────────────────────────────────────
 

@@ -1,65 +1,199 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+// ─── Landing Pages HUB ────────────────────────────────────────────────────────
+// Index of every landing page built in this monorepo.
+// Add new entries to the PROJECTS array — the grid renders automatically.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const PROJECTS = [
+  {
+    slug: "/Densify",
+    category: "Fitness & Nutrition",
+    name: "Densify",
+    description:
+      "High-density workout & nutrition app. Hypertrophy results in 40-minute sessions — even for impossible schedules.",
+    accent: "#6aabf0",
+    accentDim: "rgba(106,171,240,0.07)",
+    accentBorder: "rgba(106,171,240,0.18)",
+    accentGlow: "rgba(106,171,240,0.28)",
+    tag: "FITNESS",
+    dot: "#6aabf0",
+    extras: [
+      { label: "Liquid Glass Comparison", href: "/comparison" },
+    ],
+  },
+  {
+    slug: "/LegisFlow",
+    category: "Legal Compliance",
+    name: "LegisFlow",
+    description:
+      "Automated compliance monitoring for legal teams. Track regulatory changes, manage obligations, and stay audit-ready.",
+    accent: "#4ade80",
+    accentDim: "rgba(45,106,79,0.07)",
+    accentBorder: "rgba(45,106,79,0.22)",
+    accentGlow: "rgba(74,222,128,0.20)",
+    tag: "COMPLIANCE",
+    dot: "#4ade80",
+    extras: [],
+  },
+] as const;
+
+const TOTAL: number = PROJECTS.length;
+
+export default function HubPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#080c12] text-white font-[family-name:var(--font-geist-sans)] flex flex-col">
+
+      {/* ── Top bar ─────────────────────────────────────────────── */}
+      <header className="border-b border-white/[0.06] px-8 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          </div>
+          <span className="text-[11px] tracking-[0.25em] uppercase text-white/25 font-[family-name:var(--font-geist-mono)] ml-2">
+            landing-page-hub
+          </span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <span className="text-[11px] font-[family-name:var(--font-geist-mono)] text-white/20">
+          {TOTAL}&nbsp;project{TOTAL !== 1 ? "s" : ""}
+        </span>
+      </header>
+
+      {/* ── Hero ────────────────────────────────────────────────── */}
+      <section className="px-8 pt-20 pb-14 max-w-5xl">
+        <p className="text-[11px] tracking-[0.35em] uppercase text-white/20 font-[family-name:var(--font-geist-mono)] mb-6">
+          Quinquilharias · Design System
+        </p>
+        <h1 className="text-5xl sm:text-[64px] font-bold leading-none tracking-tight mb-5">
+          Landing Pages
+          <br />
+          <span className="text-white/20">Collection</span>
+        </h1>
+        <p className="text-white/35 text-[15px] max-w-sm leading-relaxed">
+          A workspace of production-grade landing pages — each project in its
+          own route group with isolated styles, fonts, and components.
+        </p>
+      </section>
+
+      {/* ── Rule ────────────────────────────────────────────────── */}
+      <div className="mx-8 h-px bg-white/[0.06]" />
+
+      {/* ── Project grid ────────────────────────────────────────── */}
+      <section className="px-8 py-10 flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-5xl">
+
+          {PROJECTS.map((p, i) => (
+            <div key={p.slug} className="group flex flex-col gap-2">
+
+              {/* ── Main card ── */}
+              <Link
+                href={p.slug}
+                className="relative flex flex-col justify-between rounded-2xl border p-7 min-h-[280px] transition-all duration-300 hover:scale-[1.015] overflow-hidden cursor-pointer"
+                style={{ background: p.accentDim, borderColor: p.accentBorder }}
+              >
+                {/* Hover glow */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(ellipse 70% 55% at 50% -5%, ${p.accentGlow} 0%, transparent 70%)`,
+                  }}
+                />
+
+                {/* Top row */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ background: p.dot, boxShadow: `0 0 6px ${p.dot}` }}
+                    />
+                    <span
+                      className="text-[10px] tracking-[0.3em] uppercase font-[family-name:var(--font-geist-mono)]"
+                      style={{ color: p.accent, opacity: 0.65 }}
+                    >
+                      {p.tag}
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-[family-name:var(--font-geist-mono)] text-white/12">
+                    {String(i + 1).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}
+                  </span>
+                </div>
+
+                {/* Name + description */}
+                <div className="relative z-10">
+                  <h2 className="text-[38px] font-bold leading-none tracking-tight text-white mb-3">
+                    {p.name}
+                  </h2>
+                  <p className="text-white/35 text-[13px] leading-relaxed max-w-[280px]">
+                    {p.description}
+                  </p>
+                </div>
+
+                {/* Bottom row */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-[11px] text-white/20 font-[family-name:var(--font-geist-mono)]">
+                    {p.category}
+                  </span>
+                  <span
+                    className="text-[13px] font-semibold flex items-center gap-1.5 group-hover:gap-3 transition-all duration-200"
+                    style={{ color: p.accent }}
+                  >
+                    Open
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+
+              {/* ── Sub-links ── */}
+              {p.extras.length > 0 && (
+                <div className="flex gap-2">
+                  {p.extras.map((e) => (
+                    <Link
+                      key={e.href}
+                      href={e.href}
+                      className="flex-1 flex items-center justify-between px-4 py-2.5 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-200 text-white/30 hover:text-white/55 text-[11px] font-[family-name:var(--font-geist-mono)]"
+                    >
+                      <span>{e.label}</span>
+                      <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* ── New project slot ── */}
+          <div className="rounded-2xl border border-dashed border-white/[0.07] p-7 flex flex-col items-center justify-center gap-3 text-center min-h-[280px] opacity-30 hover:opacity-50 transition-opacity duration-300 cursor-default">
+            <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M8 3v10M3 8h10" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </div>
+            <p className="text-white/40 text-[11px] font-[family-name:var(--font-geist-mono)] leading-relaxed">
+              Next landing page
+              <br />
+              <span className="text-white/20">Add entry to PROJECTS</span>
+            </p>
+          </div>
+
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ── Footer ──────────────────────────────────────────────── */}
+      <footer className="border-t border-white/[0.06] px-8 py-5 flex items-center justify-between">
+        <span className="text-[11px] text-white/15 font-[family-name:var(--font-geist-mono)]">
+          Quinquilharias · {new Date().getFullYear()}
+        </span>
+        <span className="text-[11px] text-white/10 font-[family-name:var(--font-geist-mono)]">
+          Next.js · Tailwind CSS · Framer Motion
+        </span>
+      </footer>
+
+    </main>
   );
 }

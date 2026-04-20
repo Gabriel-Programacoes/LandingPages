@@ -2,6 +2,9 @@
 
 import { z } from "zod";
 
+// Hoisted outside schema factory — RegExp created once at module load (js-hoist-regexp)
+const PHONE_REGEX = /[\d\s()\-+]+/;
+
 // ─── Schema ────────────────────────────────────────────────
 const demoSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -10,7 +13,7 @@ const demoSchema = z.object({
   phone: z
     .string()
     .min(10, "Telefone inválido — mínimo 10 dígitos")
-    .regex(/[\d\s()\-+]+/, "Formato de telefone inválido"),
+    .regex(PHONE_REGEX, "Formato de telefone inválido"),
   cnpjs: z.string().optional(),
 });
 

@@ -21,6 +21,10 @@
   --font-ui: var(--font-archivo);
   --font-terminal: var(--font-space-mono);
 
+  /* Densify font utilities — referência correta, sem loop */
+  --font-pilcrow: var(--font-nunito), system-ui, sans-serif;
+  --font-archivo: var(--font-archivo-base), system-ui, sans-serif;
+
   /* Legacy geist vars kept for root layout */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -51,3 +55,88 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ─── Liquid Glass — Densify ──────────────────────────────────────────────────
+   Technique: backdrop-filter:blur(0px) captures the composited gradient behind
+   the element; filter:url(#densify-lg) runs a feTurbulence displacement map
+   over that captured content, warping it (liquid distortion).
+   Layering:
+     ::after  z:-1  → distorted backdrop, visible through the element's semi-
+                       transparent white tint (bg-white/xx on the element itself)
+     ::before z: 2  → inset box-shadow ring above all content — pearlescent edge
+                       gleam that doesn't cover text or icons (no fill)
+   Requires <filter id="densify-lg"> in the DOM → defined in layout.tsx.
+───────────────────────────────────────────────────────────────────────────── */
+.densify-lg {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Pearlescent shine ring */
+.densify-lg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 2px 2px 0px -2px rgba(255, 255, 255, 0.90),
+    inset 0   0   6px  1px rgba(255, 255, 255, 0.55);
+}
+
+/* Liquid distortion layer */
+.densify-lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
+  -webkit-filter: url(#densify-lg);
+          filter: url(#densify-lg);
+}
+
+/* ─── Liquid Glass — Original style (static noise, scale 77) ─────────────────
+   Same two-pseudo-element technique as .densify-lg, but points to #orig-lg:
+   a frozen feTurbulence with scale=77 — the aggressive, watery warp of the
+   original open-source demo. No <animate>, no breathing. Use over any richly
+   coloured background (gradient orbs, photos, etc.) for maximum visibility.
+   Requires <filter id="orig-lg"> in the DOM → defined in layout.tsx.
+─────────────────────────────────────────────────────────────────────────────── */
+.orig-lg {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Shine ring — original demo opacity values (0.70 / 0.70) */
+.orig-lg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 2px 2px 0px -2px rgba(255, 255, 255, 0.70),
+    inset 0   0   3px  1px rgba(255, 255, 255, 0.70);
+}
+
+/* Liquid distortion — static, aggressive warp */
+.orig-lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
+  -webkit-filter: url(#orig-lg);
+          filter: url(#orig-lg);
+}
+

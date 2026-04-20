@@ -1,7 +1,10 @@
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/legisflow/HeroSection";
 import MarqueeSection from "@/components/legisflow/MarqueeSection";
-import BentoSection from "@/components/legisflow/BentoSection";
-import LeadFormSection from "@/components/legisflow/LeadFormSection";
+
+// Below-the-fold components — code-split to reduce initial JS bundle (bundle-dynamic-imports)
+const BentoSection    = dynamic(() => import("@/components/legisflow/BentoSection"));
+const LeadFormSection = dynamic(() => import("@/components/legisflow/LeadFormSection"));
 
 export default function LegisFlowPage() {
   return (
@@ -11,7 +14,7 @@ export default function LegisFlowPage() {
       <BentoSection />
       <LeadFormSection />
 
-      {/* ── Footer ─────────────────────────────────────────── */}
+      {/* Footer */}
       <footer className="bg-ink border-t-2 border-off-white/10 px-6 md:px-14 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <span className="font-headline text-xl tracking-widest text-off-white/80">
