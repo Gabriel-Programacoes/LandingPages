@@ -7,6 +7,34 @@ import Link from "next/link";
 
 const PROJECTS = [
   {
+    slug: "/DraftedObsidian",
+    category: "Engineering / Portfolio",
+    name: "Drafted Obsidian",
+    description:
+      "Spatial brutalist portfolio with a reactive coordinate lattice, spec-sheet modules, and terminal-grade system storytelling.",
+    accent: "#ff3b00",
+    accentDim: "rgba(255,59,0,0.09)",
+    accentBorder: "rgba(255,59,0,0.3)",
+    accentGlow: "rgba(255,59,0,0.25)",
+    tag: "SYSTEMS",
+    dot: "#ff3b00",
+    extras: [],
+  },
+  {
+    slug: "/CinematicInkConcrete",
+    category: "Bookstore / Editorial",
+    name: "Cinematic Ink & Concrete",
+    description:
+      "An atmospheric bookstore landing page with brutalist editorial typography, mechanical drag spines, and archive-grade motion.",
+    accent: "#d9531e",
+    accentDim: "rgba(217,83,30,0.08)",
+    accentBorder: "rgba(217,83,30,0.25)",
+    accentGlow: "rgba(217,83,30,0.25)",
+    tag: "BOOKSTORE",
+    dot: "#d9531e",
+    extras: [],
+  },
+  {
     slug: "/Densify",
     category: "Fitness & Nutrition",
     name: "Densify",

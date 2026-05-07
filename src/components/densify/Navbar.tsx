@@ -62,13 +62,13 @@ export default function Navbar() {
           className="pointer-events-auto relative flex flex-col items-stretch overflow-hidden"
           style={{
             borderRadius: mobileOpen ? 28 : 100,
-            background: scrolled ? "rgba(12,20,38,0.92)" : "rgba(18,28,50,0.72)",
-            backdropFilter: "blur(28px)",
-            WebkitBackdropFilter: "blur(28px)",
-            border: "1px solid rgba(255,255,255,0.10)",
+            background: scrolled ? "rgba(18,32,56,0.86)" : "rgba(22,36,62,0.72)",
+            backdropFilter: "blur(12px) saturate(108%)",
+            WebkitBackdropFilter: "blur(12px) saturate(108%)",
+            border: "1px solid rgba(255,255,255,0.16)",
             boxShadow: scrolled
-              ? "0 12px 48px rgba(0,0,0,0.35), inset 0 1.5px 0 rgba(255,255,255,0.07)"
-              : "0 8px 32px rgba(0,0,0,0.20), inset 0 1.5px 0 rgba(255,255,255,0.09)",
+              ? "0 14px 36px rgba(18,35,62,0.28), inset 0 1px 0 rgba(255,255,255,0.14)"
+              : "0 8px 26px rgba(18,35,62,0.2), inset 0 1px 0 rgba(255,255,255,0.16)",
           }}
         >
           {/* ── Top bar ─────────────────────────────────── */}
