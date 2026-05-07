@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/legisflow/HeroSection";
 import MarqueeSection from "@/components/legisflow/MarqueeSection";
+import MiniHubMenu from "@/components/MiniHubMenu";
 
 // Below-the-fold components — code-split to reduce initial JS bundle (bundle-dynamic-imports)
 const BentoSection    = dynamic(() => import("@/components/legisflow/BentoSection"));
@@ -9,6 +10,7 @@ const LeadFormSection = dynamic(() => import("@/components/legisflow/LeadFormSec
 export default function LegisFlowPage() {
   return (
     <main className="bg-off-white min-h-screen overflow-x-hidden">
+      <MiniHubMenu />
       <HeroSection />
       <MarqueeSection />
       <BentoSection />

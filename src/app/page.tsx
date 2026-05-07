@@ -7,6 +7,20 @@ import Link from "next/link";
 
 const PROJECTS = [
   {
+    slug: "/SculptedSilence",
+    category: "Fashion / Editorial",
+    name: "Sculpted Silence",
+    description:
+      "A digital atelier aesthetic with hushed opulence, architectural asymmetry, and slow editorial motion language.",
+    accent: "#9a948c",
+    accentDim: "rgba(154,148,140,0.10)",
+    accentBorder: "rgba(154,148,140,0.30)",
+    accentGlow: "rgba(154,148,140,0.22)",
+    tag: "ATELIER",
+    dot: "#9a948c",
+    extras: [],
+  },
+  {
     slug: "/DraftedObsidian",
     category: "Engineering / Portfolio",
     name: "Drafted Obsidian",
@@ -92,7 +106,7 @@ export default function HubPage() {
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className="px-8 pt-20 pb-14 max-w-5xl">
         <p className="text-[11px] tracking-[0.35em] uppercase text-white/20 font-[family-name:var(--font-geist-mono)] mb-6">
-          Quinquilharias · Design System
+          Landing Pages · Hub
         </p>
         <h1 className="text-5xl sm:text-[64px] font-bold leading-none tracking-tight mb-5">
           Landing Pages
@@ -215,7 +229,7 @@ export default function HubPage() {
       {/* ── Footer ──────────────────────────────────────────────── */}
       <footer className="border-t border-white/[0.06] px-8 py-5 flex items-center justify-between">
         <span className="text-[11px] text-white/15 font-[family-name:var(--font-geist-mono)]">
-          Quinquilharias · {new Date().getFullYear()}
+          LandingPagesHub · {new Date().getFullYear()}
         </span>
         <span className="text-[11px] text-white/10 font-[family-name:var(--font-geist-mono)]">
           Next.js · Tailwind CSS · Framer Motion

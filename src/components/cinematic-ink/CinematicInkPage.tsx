@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import MiniHubMenu from "@/components/MiniHubMenu";
 
 type SpineBook = {
   id: string;
@@ -121,6 +122,7 @@ export default function CinematicInkPage() {
       className="min-h-screen bg-[#0A0A0A] text-[#E8E3D9] overflow-x-hidden"
       onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
     >
+      <MiniHubMenu />
       <motion.div
         aria-hidden
         className="fixed z-[100] pointer-events-none hidden md:block mix-blend-difference"

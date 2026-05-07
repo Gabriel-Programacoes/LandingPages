@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import MiniHubMenu from "@/components/MiniHubMenu";
 
 type ProjectSpec = {
   id: string;
@@ -83,6 +84,7 @@ export default function DraftedObsidianPage() {
 
   return (
     <main className="min-h-screen bg-[#0C0C0C] text-[#F3F3F0] font-[family-name:var(--font-chivo-mono)] relative overflow-hidden">
+      <MiniHubMenu />
       <div
         className="fixed inset-0 z-0 pointer-events-none opacity-20"
         style={{
