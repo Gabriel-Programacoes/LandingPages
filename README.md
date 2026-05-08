@@ -23,6 +23,34 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://landingpages-hub.vercel.app)
 [![Live](https://img.shields.io/badge/Live-landingpages--hub.vercel.app-00C7B7?style=for-the-badge&logo=vercel&logoColor=white)](https://landingpages-hub.vercel.app)
+[![Projects](https://img.shields.io/badge/Projects-5-8B5CF6?style=for-the-badge)](https://landingpages-hub.vercel.app)
+
+</div>
+
+---
+
+## ✨ Latest Updates
+
+- HUB now indexes **5 live project entries** from `PROJECTS` in `src/app/page.tsx`.
+- New domain route groups:
+  - `(atelier)` → `/SculptedSilence`
+  - `(engineering)` → `/DraftedObsidian`
+  - `(books)` → `/CinematicInkConcrete`
+- Added `MiniHubMenu` floating navigator for fast cross-project routing.
+- Expanded HUB cards with accent palette metadata and optional per-project extra links.
+- `LegisFlow` lead capture flow now runs with **Server Actions + Zod** validation.
+
+---
+
+## 🎯 Featured Projects
+
+<div align="center">
+
+[![ATELIER](https://img.shields.io/badge/Sculpted%20Silence-ATELIER-9a948c?style=for-the-badge)](https://landingpages-hub.vercel.app/SculptedSilence)
+[![SYSTEMS](https://img.shields.io/badge/Drafted%20Obsidian-SYSTEMS-ff3b00?style=for-the-badge)](https://landingpages-hub.vercel.app/DraftedObsidian)
+[![BOOKSTORE](https://img.shields.io/badge/Cinematic%20Ink-BOOKSTORE-d9531e?style=for-the-badge)](https://landingpages-hub.vercel.app/CinematicInkConcrete)
+[![FITNESS](https://img.shields.io/badge/Densify-FITNESS-6aabf0?style=for-the-badge)](https://landingpages-hub.vercel.app/Densify)
+[![COMPLIANCE](https://img.shields.io/badge/LegisFlow-COMPLIANCE-4ade80?style=for-the-badge)](https://landingpages-hub.vercel.app/LegisFlow)
 
 </div>
 
@@ -30,37 +58,36 @@
 
 ## 📦 Monorepo Structure
 
-```
+```text
 landing-page-hub/
-├── 📁 src/
-│   ├── 📁 app/
-│   │   ├── 📄 page.tsx               ← HUB home — lists all projects
-│   │   ├── 📄 layout.tsx             ← Root layout (Geist fonts, metadata)
-│   │   ├── 📄 globals.css
+├── src/
+│   ├── app/
+│   │   ├── page.tsx                              ← HUB home (PROJECTS registry)
+│   │   ├── layout.tsx                            ← Root layout (Geist fonts, metadata)
+│   │   ├── globals.css
 │   │   │
-│   │   ├── 📁 (fitness)/             ← Route group · Fitness projects
-│   │   │   ├── 📄 layout.tsx
-│   │   │   ├── 📁 Densify/           ← 💪 Densify landing page
-│   │   │   │   └── 📄 page.tsx
-│   │   │   └── 📁 comparison/        ← Liquid Glass CSS comparison
-│   │   │       └── 📄 page.tsx
-│   │   │
-│   │   └── 📁 (compliance)/          ← Route group · Compliance projects
-│   │       ├── 📄 layout.tsx
-│   │       └── 📁 LegisFlow/         ← ⚖️ LegisFlow landing page
-│   │           ├── 📄 page.tsx
-│   │           └── 📄 actions.ts     ← Server Actions (lead form)
+│   │   ├── (atelier)/SculptedSilence/page.tsx   ← Fashion / Editorial
+│   │   ├── (engineering)/DraftedObsidian/page.tsx
+│   │   ├── (books)/CinematicInkConcrete/page.tsx
+│   │   ├── (fitness)/Densify/page.tsx
+│   │   ├── (fitness)/comparison/page.tsx        ← Liquid Glass comparison
+│   │   └── (compliance)/LegisFlow/
+│   │       ├── page.tsx
+│   │       └── actions.ts                        ← Server Action (lead form)
 │   │
-│   └── 📁 components/
-│       ├── 📁 densify/               ← Densify-specific components
-│       ├── 📁 legisflow/             ← LegisFlow-specific components
-│       └── 📁 ui/                    ← Shared primitives
+│   └── components/
+│       ├── MiniHubMenu.tsx
+│       ├── sculpted-silence/
+│       ├── drafted-obsidian/
+│       ├── cinematic-ink/
+│       ├── densify/
+│       └── legisflow/
 │
-├── 📁 public/
-├── 📄 next.config.ts
-├── 📄 vercel.json
-├── 📄 package.json
-└── 📄 tsconfig.json
+├── public/                                       ← Static assets
+├── next.config.ts
+├── vercel.json
+├── package.json
+└── tsconfig.json
 ```
 
 ---
@@ -69,10 +96,13 @@ landing-page-hub/
 
 | # | Project | Category | Route | Docs |
 |---|---------|----------|-------|------|
-| 01 | 💪 **Densify** | Fitness & Nutrition | `/Densify` | [README →](./src/app/(fitness)/Densify/README.md) |
-| 02 | ⚖️ **LegisFlow** | Legal Compliance | `/LegisFlow` | [README →](./src/app/(compliance)/LegisFlow/README.md) |
+| 01 | 🧵 **Sculpted Silence** ![ATELIER](https://img.shields.io/badge/ATELIER-9a948c?style=flat-square) | Fashion / Editorial | `/SculptedSilence` | - |
+| 02 | 🧱 **Drafted Obsidian** ![SYSTEMS](https://img.shields.io/badge/SYSTEMS-ff3b00?style=flat-square) | Engineering / Portfolio | `/DraftedObsidian` | - |
+| 03 | 📚 **Cinematic Ink & Concrete** ![BOOKSTORE](https://img.shields.io/badge/BOOKSTORE-d9531e?style=flat-square) | Bookstore / Editorial | `/CinematicInkConcrete` | - |
+| 04 | 💪 **Densify** ![FITNESS](https://img.shields.io/badge/FITNESS-6aabf0?style=flat-square) | Fitness & Nutrition | `/Densify` | [README →](./src/app/(fitness)/Densify/README.md) |
+| 05 | ⚖️ **LegisFlow** ![COMPLIANCE](https://img.shields.io/badge/COMPLIANCE-4ade80?style=flat-square) | Legal Compliance | `/LegisFlow` | [README →](./src/app/(compliance)/LegisFlow/README.md) |
 
-> **Add a new project:** create a route group + folder under `src/app/`, then add an entry to the `PROJECTS` array in `src/app/page.tsx` — the hub grid renders automatically.
+> **Hub registration flow:** add your page route + components, then append a new object to `PROJECTS` in `src/app/page.tsx`.
 
 ---
 
@@ -82,30 +112,29 @@ landing-page-hub/
 
 | Tool | Version |
 |------|---------|
-| Node.js | `≥ 20` |
-| npm | `≥ 10` |
+| Node.js | `>= 20` |
+| npm | `>= 10` |
 
 ### Installation
 
 ```bash
-# 1 — Clone the repository
-git clone <your-repo-url>
+# 1 — Enter project
 cd landing-page-hub
 
 # 2 — Install dependencies
 npm install
 
-# 3 — Start the development server
+# 3 — Start dev server
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** — you'll land on the HUB home page.
+Open **[http://localhost:3000](http://localhost:3000)** to access the HUB.
 
 ### Available Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start dev server with Turbopack |
+| `npm run dev` | Start local development server |
 | `npm run build` | Create production build |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
@@ -118,47 +147,46 @@ Open **[http://localhost:3000](http://localhost:3000)** — you'll land on the H
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `next` | 16.2.3 | Framework & routing (App Router) |
+| `next` | 16.2.3 | App Router + rendering |
 | `react` / `react-dom` | 19.2.4 | UI runtime |
 | `typescript` | ^5 | Type safety |
 
-### Styling & Animation
+### Styling & Motion
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `tailwindcss` | ^4 | Utility-first CSS |
-| `framer-motion` | ^12 | Animations & transitions |
+| `tailwindcss` | ^4 | Utility styling |
+| `framer-motion` | ^12 | Motion and transitions |
 
-### UI Primitives
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `@radix-ui/react-slider` | ^1.3 | Accessible sliders |
-| `@radix-ui/react-progress` | ^1.1 | Progress bars |
-| `@phosphor-icons/react` | ^2.1 | Icon system |
-| `@icons-pack/react-simple-icons` | ^13 | Brand logos |
-
-### Validation
+### UI & Validation
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `zod` | ^4 | Schema validation (Server Actions) |
+| `@radix-ui/react-slider` | ^1.3 | Slider primitives |
+| `@radix-ui/react-progress` | ^1.1 | Progress primitives |
+| `@phosphor-icons/react` | ^2.1 | Icons |
+| `@icons-pack/react-simple-icons` | ^13 | Brand icons |
+| `zod` | ^4 | Server-side schema validation |
 
 ---
 
 ## 🏗️ Architecture
 
-### Route Groups
+### Route Group Isolation
 
-Next.js [route groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups) (`(fitness)`, `(compliance)`) keep projects **fully isolated** — each group has its own `layout.tsx` with independent fonts, CSS variables, and metadata. Routes remain clean (e.g. `/Densify`, not `/fitness/Densify`).
+Next.js route groups (`(atelier)`, `(books)`, `(compliance)`, `(engineering)`, `(fitness)`) isolate project layouts and styles without polluting URLs.
 
-### Server Actions
+### HUB-Driven Registry
 
-Lead forms use **Next.js Server Actions** (`actions.ts`) validated on the Edge with **Zod**. Zero client-side fetch boilerplate, instant error feedback, no fake loading states.
+The HUB grid is rendered from the `PROJECTS` array in `src/app/page.tsx` (slug, category, visual accent, metadata, extras).
 
-### Component Isolation
+### Form Pipeline (LegisFlow)
 
-Every project owns its components under `src/components/<project>/`. Shared primitives live in `src/components/ui/`.
+`src/app/(compliance)/LegisFlow/actions.ts` validates lead submissions with `zod` and returns typed `FormState` for UI feedback.
+
+### Runtime & Security
+
+`next.config.ts` enables `output: "standalone"` and ships common security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, etc.).
 
 ---
 
@@ -166,44 +194,32 @@ Every project owns its components under `src/components/<project>/`. Shared prim
 
 🌐 **Live:** [https://landingpages-hub.vercel.app](https://landingpages-hub.vercel.app)
 
-The project is configured for **[Vercel](https://vercel.com)** via `vercel.json` and `output: "standalone"` in `next.config.ts`.
+The project is configured for **Vercel** via `vercel.json`:
 
-### Deploy via Vercel CLI
-
-```bash
-npm i -g vercel
-vercel login
-vercel
-```
-
-### Deploy via GitHub Integration
-
-1. Push to GitHub
-2. Go to [vercel.com/new](https://vercel.com/new) → Import repository
-3. Set **Root Directory** to `landing-page-hub`
-4. Click **Deploy** — Vercel auto-detects Next.js ✅
-
-> ⚠️ Add any environment variables in **Vercel → Project → Settings → Environment Variables** before deploying.
+- `framework`: `nextjs`
+- `buildCommand`: `npm run build`
+- `devCommand`: `npm run dev`
+- `outputDirectory`: `.next`
 
 ---
 
 ## 📁 Adding a New Landing Page
 
 ```bash
-# 1. Create a route group (if new category)
-mkdir src/app/(your-category)
-touch src/app/(your-category)/layout.tsx
-
-# 2. Create the page
+# 1. Create a route folder
 mkdir src/app/(your-category)/YourProject
+
+# 2. Add page entry
 touch src/app/(your-category)/YourProject/page.tsx
 
-# 3. Create components folder
+# 3. Add component scope
 mkdir src/components/yourproject
 
-# 4. Register in the HUB
-# → Edit src/app/page.tsx → add entry to PROJECTS array
+# 4. Register in HUB
+# Edit src/app/page.tsx and append to PROJECTS
 ```
+
+Optional: add a direct shortcut to `src/components/MiniHubMenu.tsx`.
 
 ---
 
