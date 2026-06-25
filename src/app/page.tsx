@@ -78,6 +78,20 @@ const PROJECTS = [
     dot: "#4ade80",
     extras: [],
   },
+  {
+    slug: "/SpectralCore",
+    category: "Interactive / 3D",
+    name: "Spectral Core",
+    description:
+      "A WebGL landing page with a reactive neon core, orbital inspection controls, cinematic light, and post-processing bloom.",
+    accent: "#d7ff3f",
+    accentDim: "rgba(215,255,63,0.06)",
+    accentBorder: "rgba(215,255,63,0.22)",
+    accentGlow: "rgba(215,255,63,0.28)",
+    tag: "WEBGL",
+    dot: "#d7ff3f",
+    extras: [],
+  },
 ] as const;
 
 const TOTAL: number = PROJECTS.length;

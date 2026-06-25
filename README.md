@@ -23,7 +23,7 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://landingpages-hub.vercel.app)
 [![Live](https://img.shields.io/badge/Live-landingpages--hub.vercel.app-00C7B7?style=for-the-badge&logo=vercel&logoColor=white)](https://landingpages-hub.vercel.app)
-[![Projects](https://img.shields.io/badge/Projects-5-8B5CF6?style=for-the-badge)](https://landingpages-hub.vercel.app)
+[![Projects](https://img.shields.io/badge/Projects-6-8B5CF6?style=for-the-badge)](https://landingpages-hub.vercel.app)
 
 </div>
 
@@ -31,14 +31,16 @@
 
 ## ✨ Latest Updates
 
-- HUB now indexes **5 live project entries** from `PROJECTS` in `src/app/page.tsx`.
+- HUB now indexes **6 live project entries** from `PROJECTS` in `src/app/page.tsx`.
 - New domain route groups:
   - `(atelier)` → `/SculptedSilence`
   - `(engineering)` → `/DraftedObsidian`
   - `(books)` → `/CinematicInkConcrete`
+  - `(immersive)` → `/SpectralCore`
 - Added `MiniHubMenu` floating navigator for fast cross-project routing.
 - Expanded HUB cards with accent palette metadata and optional per-project extra links.
 - `LegisFlow` lead capture flow now runs with **Server Actions + Zod** validation.
+- `Spectral Core` adds an interactive WebGL scene with React Three Fiber, Drei controls, Three.js materials, and post-processing bloom.
 
 ---
 
@@ -51,6 +53,7 @@
 [![BOOKSTORE](https://img.shields.io/badge/Cinematic%20Ink-BOOKSTORE-d9531e?style=for-the-badge)](https://landingpages-hub.vercel.app/CinematicInkConcrete)
 [![FITNESS](https://img.shields.io/badge/Densify-FITNESS-6aabf0?style=for-the-badge)](https://landingpages-hub.vercel.app/Densify)
 [![COMPLIANCE](https://img.shields.io/badge/LegisFlow-COMPLIANCE-4ade80?style=for-the-badge)](https://landingpages-hub.vercel.app/LegisFlow)
+[![WEBGL](https://img.shields.io/badge/Spectral%20Core-WEBGL-d7ff3f?style=for-the-badge)](https://landingpages-hub.vercel.app/SpectralCore)
 
 </div>
 
@@ -69,6 +72,7 @@ landing-page-hub/
 │   │   ├── (atelier)/SculptedSilence/page.tsx   ← Fashion / Editorial
 │   │   ├── (engineering)/DraftedObsidian/page.tsx
 │   │   ├── (books)/CinematicInkConcrete/page.tsx
+│   │   ├── (immersive)/SpectralCore/page.tsx   ← Interactive WebGL / 3D
 │   │   ├── (fitness)/Densify/page.tsx
 │   │   ├── (fitness)/comparison/page.tsx        ← Liquid Glass comparison
 │   │   └── (compliance)/LegisFlow/
@@ -81,7 +85,8 @@ landing-page-hub/
 │       ├── drafted-obsidian/
 │       ├── cinematic-ink/
 │       ├── densify/
-│       └── legisflow/
+│       ├── legisflow/
+│       └── spectral-core/
 │
 ├── public/                                       ← Static assets
 ├── next.config.ts
@@ -101,6 +106,7 @@ landing-page-hub/
 | 03 | 📚 **Cinematic Ink & Concrete** ![BOOKSTORE](https://img.shields.io/badge/BOOKSTORE-d9531e?style=flat-square) | Bookstore / Editorial | `/CinematicInkConcrete` | - |
 | 04 | 💪 **Densify** ![FITNESS](https://img.shields.io/badge/FITNESS-6aabf0?style=flat-square) | Fitness & Nutrition | `/Densify` | [README →](./src/app/(fitness)/Densify/README.md) |
 | 05 | ⚖️ **LegisFlow** ![COMPLIANCE](https://img.shields.io/badge/COMPLIANCE-4ade80?style=flat-square) | Legal Compliance | `/LegisFlow` | [README →](./src/app/(compliance)/LegisFlow/README.md) |
+| 06 | 🟢 **Spectral Core** ![WEBGL](https://img.shields.io/badge/WEBGL-d7ff3f?style=flat-square) | Interactive / 3D | `/SpectralCore` | - |
 
 > **Hub registration flow:** add your page route + components, then append a new object to `PROJECTS` in `src/app/page.tsx`.
 
@@ -158,6 +164,16 @@ Open **[http://localhost:3000](http://localhost:3000)** to access the HUB.
 | `tailwindcss` | ^4 | Utility styling |
 | `framer-motion` | ^12 | Motion and transitions |
 
+### 3D & WebGL
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `three` | ^0.184 | WebGL rendering primitives |
+| `@react-three/fiber` | ^9.6 | React renderer for Three.js scenes |
+| `@react-three/drei` | ^10.7 | Cameras, controls, environments, and helpers |
+| `@react-three/postprocessing` | ^3.0 | React bindings for scene post-processing |
+| `postprocessing` | ^6.39 | Bloom, chromatic aberration, and visual effects |
+
 ### UI & Validation
 
 | Package | Version | Purpose |
@@ -174,7 +190,7 @@ Open **[http://localhost:3000](http://localhost:3000)** to access the HUB.
 
 ### Route Group Isolation
 
-Next.js route groups (`(atelier)`, `(books)`, `(compliance)`, `(engineering)`, `(fitness)`) isolate project layouts and styles without polluting URLs.
+Next.js route groups (`(atelier)`, `(books)`, `(compliance)`, `(engineering)`, `(fitness)`, `(immersive)`) isolate project layouts and styles without polluting URLs.
 
 ### HUB-Driven Registry
 

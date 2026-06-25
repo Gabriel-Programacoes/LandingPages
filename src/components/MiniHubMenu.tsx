@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/CinematicInkConcrete", label: "Cinematic Ink" },
   { href: "/DraftedObsidian", label: "Drafted Obsidian" },
   { href: "/SculptedSilence", label: "Sculpted Silence" },
+  { href: "/SpectralCore", label: "Spectral Core" },
 ];
 
 export default function MiniHubMenu({ className }: { className?: string }) {
