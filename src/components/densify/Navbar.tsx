@@ -59,7 +59,7 @@ export default function Navbar() {
           transition={softSpring}
           onMouseEnter={() => setNavHovered(true)}
           onMouseLeave={() => setNavHovered(false)}
-          className="pointer-events-auto relative flex flex-col items-stretch overflow-hidden"
+          className="liquid-glass pointer-events-auto relative flex flex-col items-stretch overflow-hidden"
           style={{
             borderRadius: mobileOpen ? 28 : 100,
             background: scrolled ? "rgba(18,32,56,0.86)" : "rgba(22,36,62,0.72)",

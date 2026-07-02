@@ -188,7 +188,7 @@ export default function BenefitsCarousel() {
                   e.currentTarget.style.boxShadow = b.shadow;
                   e.currentTarget.style.transform = "translateY(0) scale(1)";
                 }}
-                className="group relative flex-shrink-0 rounded-[28px] bg-white/30 backdrop-blur-xl border border-white/55 p-7 overflow-hidden cursor-default"
+                className="liquid-glass group relative flex-shrink-0 rounded-[28px] bg-white/30 border border-white/55 p-7 cursor-default"
                 style={{
                   width: CARD_W,
                   marginRight: GAP,

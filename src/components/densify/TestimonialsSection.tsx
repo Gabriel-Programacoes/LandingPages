@@ -159,7 +159,7 @@ export default function TestimonialsSection() {
 										ease: [0.16, 1, 0.3, 1],
 									}}
 									whileHover={{ y: -5, scale: 1.01 }}
-									className={`relative p-6 rounded-[24px] border transition-shadow duration-400 cursor-default
+									className={`liquid-glass relative p-6 rounded-[24px] border transition-shadow duration-400 cursor-default
                     ${
 											t.featured
 												? "bg-white/12 border-white/20 shadow-[0_12px_48px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] hover:shadow-[0_24px_72px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.2)]"

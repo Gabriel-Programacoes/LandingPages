@@ -52,7 +52,7 @@ export default function CTASection() {
           {highlights.map(({ Icon, label, sub }) => (
             <div
               key={label}
-              className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/30 backdrop-blur-xl border border-white/55 shadow-[0_4px_24px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.7)]"
+              className="liquid-glass flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/30 border border-white/55 shadow-[0_4px_24px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.7)]"
             >
               <div className="w-9 h-9 rounded-xl bg-[#3d72b4]/12 border border-[#3d72b4]/20 flex items-center justify-center">
                 <Icon size={18} weight="duotone" color="#3d72b4" />
@@ -109,7 +109,7 @@ export default function CTASection() {
                 href="#"
                 whileHover={{ scale: 1.04, boxShadow: "0 20px 56px rgba(61,114,180,0.2)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-4 px-7 py-4 rounded-full bg-white/30 backdrop-blur-xl border border-white/55 text-[#1e3050] font-archivo font-semibold text-base shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.7)] cursor-pointer hover:bg-white/50 transition-colors duration-300"
+                className="liquid-glass inline-flex items-center gap-4 px-7 py-4 rounded-full bg-white/30 border border-white/55 text-[#1e3050] font-archivo font-semibold text-base shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.7)] cursor-pointer hover:bg-white/50 transition-colors duration-300"
               >
                 <SiGoogleplay size={20} color="#1e3050" />
                 <div className="flex flex-col items-start leading-tight">
@@ -138,7 +138,7 @@ export default function CTASection() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:block w-[280px] flex-shrink-0"
           >
-            <div className="relative rounded-[32px] bg-white/25 backdrop-blur-2xl border border-white/60 shadow-[0_32px_80px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.8)] p-7 overflow-hidden">
+            <div className="liquid-glass relative rounded-[32px] bg-white/25 border border-white/60 shadow-[0_32px_80px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.8)] p-7">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent" />
 
               <p className="font-archivo text-xs text-[#3a5070]/55 uppercase tracking-widest mb-2">Semana 12</p>

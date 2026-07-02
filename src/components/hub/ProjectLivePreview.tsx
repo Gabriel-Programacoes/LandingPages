@@ -17,7 +17,7 @@ const loop = {
 
 function PreviewShell({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute inset-x-4 top-16 h-32 overflow-hidden border border-white/[0.06] bg-black/30 shadow-[inset_0_0_28px_rgba(0,0,0,0.55)]">
+    <div className="absolute inset-x-4 top-14 h-40 overflow-hidden border border-white/[0.06] bg-black/30 shadow-[inset_0_0_28px_rgba(0,0,0,0.55)]">
       {children}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.36),transparent_18%,transparent_82%,rgba(0,0,0,0.36))]" />
     </div>

@@ -19,6 +19,7 @@
 
 # Test / tooling output
 /coverage
+.tmp-playwright/
 .turbo/
 .cache/
 .eslintcache

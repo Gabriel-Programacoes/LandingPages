@@ -8,6 +8,16 @@
   --border-ink: #0A0A0A;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* ─── Tailwind Theme Extension ───────────────────────────── */
 @theme inline {
   --color-background: var(--background);
@@ -39,6 +49,11 @@
   to   { transform: translateX(-50%); }
 }
 
+@keyframes moveBackground {
+  from { background-position: 0% 0%; }
+  to { background-position: 0% -1000%; }
+}
+
 /* ─── Bento grid (desktop only) ──────────────────────────── */
 @media (min-width: 768px) {
   .legis-bento {
@@ -67,44 +82,61 @@ body {
                        gleam that doesn't cover text or icons (no fill)
    Requires <filter id="densify-lg"> in the DOM → defined in layout.tsx.
 ───────────────────────────────────────────────────────────────────────────── */
-.densify-lg {
+.densify-lg,
+.liquid-glass {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
+  transition-property: box-shadow, border-color, background-color, transform, padding;
+  transition-duration: 700ms;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 
-/* Restrained edge ring */
-.densify-lg::before {
+.densify-lg::before,
+.liquid-glass::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   border-radius: inherit;
   pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.42), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.1) 52%, rgba(255, 255, 255, 0.18));
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.48);
+    inset 2px 2px 1px rgba(255, 255, 255, 0.55),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.46),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.38);
+  mix-blend-mode: screen;
+  opacity: 0.92;
 }
 
-/* Low-distortion matte layer */
-.densify-lg::after {
+.densify-lg::after,
+.liquid-glass::after {
   content: '';
   display: block;
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   border-radius: inherit;
   overflow: hidden;
   background: linear-gradient(
     160deg,
-    rgba(255, 255, 255, 0.22) 0%,
-    rgba(255, 255, 255, 0.08) 55%,
-    rgba(255, 255, 255, 0.03) 100%
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.14) 55%,
+    rgba(255, 255, 255, 0.08) 100%
   );
-  -webkit-backdrop-filter: blur(10px) saturate(110%);
-          backdrop-filter: blur(10px) saturate(110%);
-  -webkit-filter: url(#densify-lg);
-          filter: url(#densify-lg);
-  opacity: 0.28;
+  -webkit-backdrop-filter: blur(4px) saturate(142%) contrast(108%);
+          backdrop-filter: blur(4px) saturate(142%) contrast(108%);
+  -webkit-filter: url(#glass-distortion);
+          filter: url(#glass-distortion);
+  opacity: 0.82;
+}
+
+.densify-lg > *,
+.liquid-glass > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── Liquid Glass — Original style (static noise, scale 77) ─────────────────
@@ -117,39 +149,49 @@ body {
 .orig-lg {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
 }
 
-/* Re-scoped as a cleaner architectural panel */
 .orig-lg::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   border-radius: inherit;
   pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.5), transparent 24%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.08) 58%, rgba(255, 255, 255, 0.2));
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    inset 2px 2px 1px rgba(255, 255, 255, 0.55),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.46),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+  mix-blend-mode: screen;
+  opacity: 0.9;
 }
 
-/* Very subtle texture, no exaggerated water warp */
 .orig-lg::after {
   content: '';
   display: block;
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   border-radius: inherit;
   overflow: hidden;
   background: linear-gradient(
     175deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.06) 62%,
-    rgba(255, 255, 255, 0.02) 100%
+    rgba(255, 255, 255, 0.26) 0%,
+    rgba(255, 255, 255, 0.12) 62%,
+    rgba(255, 255, 255, 0.06) 100%
   );
-  -webkit-backdrop-filter: blur(12px) saturate(108%);
-          backdrop-filter: blur(12px) saturate(108%);
-  -webkit-filter: url(#orig-lg);
-          filter: url(#orig-lg);
-  opacity: 0.16;
+  -webkit-backdrop-filter: blur(4px) saturate(140%) contrast(108%);
+          backdrop-filter: blur(4px) saturate(140%) contrast(108%);
+  -webkit-filter: url(#glass-distortion);
+          filter: url(#glass-distortion);
+  opacity: 0.78;
+}
+
+.orig-lg > * {
+  position: relative;
+  z-index: 2;
 }

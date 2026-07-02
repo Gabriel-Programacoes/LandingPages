@@ -285,7 +285,7 @@ export default function CalculatorSection() {
         </motion.div>
 
         {/* Card */}
-        <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] overflow-hidden min-h-[460px] flex flex-col">
+        <div className="liquid-glass relative bg-white/10 border border-white/20 rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] min-h-[460px] flex flex-col">
           {/* Progress bar */}
           {step < 3 ? (
             <div className="px-8 pt-6">
