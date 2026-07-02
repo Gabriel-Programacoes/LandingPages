@@ -1,9 +1,0 @@
-
-> landing-page-hub@0.1.0 dev
-> next dev --port 3001
-
-▲ Next.js 16.2.3 (Turbopack)
-- Local:         http://localhost:3001
-- Network:       http://192.168.40.81:3001
-✓ Ready in 688ms
-[?25h
