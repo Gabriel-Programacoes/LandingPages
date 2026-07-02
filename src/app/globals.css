@@ -54,6 +54,36 @@ html {
   to { background-position: 0% -1000%; }
 }
 
+@keyframes densify-control-shimmer {
+  0% {
+    background-position: 0% 50%, 18% 8%, 0% 50%;
+  }
+  37% {
+    background-position: 72% 44%, 34% 12%, 48% 50%;
+  }
+  71% {
+    background-position: 38% 58%, 12% 18%, 88% 50%;
+  }
+  100% {
+    background-position: 0% 50%, 18% 8%, 0% 50%;
+  }
+}
+
+@keyframes densify-control-breathe {
+  0%, 100% {
+    opacity: 0.92;
+    transform: scale(1);
+  }
+  42% {
+    opacity: 1;
+    transform: scale(1.012);
+  }
+  68% {
+    opacity: 0.86;
+    transform: scale(1.006);
+  }
+}
+
 /* ─── Bento grid (desktop only) ──────────────────────────── */
 @media (min-width: 768px) {
   .legis-bento {
@@ -71,22 +101,39 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.densify-deferred-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+.densify-benefit-card {
+  box-shadow: var(--benefit-shadow);
+  transform: translateY(0) scale(1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.densify-benefit-card:hover {
+  box-shadow: var(--benefit-shadow-hover);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.densify-benefit-icon {
+  background: color-mix(in srgb, var(--benefit-accent) 10%, transparent);
+  border-color: color-mix(in srgb, var(--benefit-accent) 19%, transparent);
+}
+
 /* ─── Liquid Glass — Densify ──────────────────────────────────────────────────
-   Technique: backdrop-filter:blur(0px) captures the composited gradient behind
-   the element; filter:url(#densify-lg) runs a feTurbulence displacement map
-   over that captured content, warping it (liquid distortion).
-   Layering:
-     ::after  z:-1  → distorted backdrop, visible through the element's semi-
-                       transparent white tint (bg-white/xx on the element itself)
-     ::before z: 2  → inset box-shadow ring above all content — pearlescent edge
-                       gleam that doesn't cover text or icons (no fill)
-   Requires <filter id="densify-lg"> in the DOM → defined in layout.tsx.
+   Keep the lens almost unblurred: the material should bend the composed
+   backdrop, not flatten it into a cloudy panel.
 ───────────────────────────────────────────────────────────────────────────── */
 .densify-lg,
 .liquid-glass {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
   transition-property: box-shadow, border-color, background-color, transform, padding;
   transition-duration: 700ms;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 2.2);
@@ -101,14 +148,17 @@ body {
   border-radius: inherit;
   pointer-events: none;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.42), transparent 26%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.1) 52%, rgba(255, 255, 255, 0.18));
+    linear-gradient(140deg, rgba(255, 255, 255, 0.72) 0 1px, transparent 1px 42%),
+    radial-gradient(120% 82% at 18% 10%, rgba(255, 255, 255, 0.38), transparent 34%),
+    radial-gradient(96% 62% at 84% 88%, rgba(126, 178, 226, 0.16), transparent 48%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.035) 48%, rgba(255, 255, 255, 0.14));
   box-shadow:
-    inset 2px 2px 1px rgba(255, 255, 255, 0.55),
-    inset -1px -1px 1px rgba(255, 255, 255, 0.46),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.38);
+    inset 2px 2px 0 -1px rgba(255, 255, 255, 0.78),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 -18px 42px rgba(48, 78, 120, 0.08);
   mix-blend-mode: screen;
-  opacity: 0.92;
+  opacity: 0.86;
 }
 
 .densify-lg::after,
@@ -116,21 +166,54 @@ body {
   content: '';
   display: block;
   position: absolute;
-  inset: 0;
+  inset: -2px;
   z-index: 0;
   border-radius: inherit;
   overflow: hidden;
   background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(255, 255, 255, 0.14) 55%,
-    rgba(255, 255, 255, 0.08) 100%
+    145deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.045) 48%,
+    rgba(255, 255, 255, 0.1) 100%
   );
-  -webkit-backdrop-filter: blur(4px) saturate(142%) contrast(108%);
-          backdrop-filter: blur(4px) saturate(142%) contrast(108%);
-  -webkit-filter: url(#glass-distortion);
-          filter: url(#glass-distortion);
-  opacity: 0.82;
+  -webkit-backdrop-filter: blur(0.85px) saturate(158%) contrast(110%);
+          backdrop-filter: blur(0.85px) saturate(158%) contrast(110%);
+  -webkit-filter: url(#densify-lg);
+          filter: url(#densify-lg);
+  opacity: 0.9;
+}
+
+.densify-control::after {
+  inset: -1px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.075) 54%,
+    rgba(255, 255, 255, 0.15)
+  );
+  -webkit-backdrop-filter: blur(7px) saturate(145%) contrast(104%);
+          backdrop-filter: blur(7px) saturate(145%) contrast(104%);
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+  animation: densify-control-breathe 9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.densify-control::before {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.72) 0 1px, transparent 1px 52%),
+    radial-gradient(100% 86% at 18% 8%, rgba(255, 255, 255, 0.24), transparent 34%),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035) 54%, rgba(255, 255, 255, 0.11));
+  background-size: 220% 100%, 160% 160%, 220% 100%;
+  opacity: 0.76;
+  animation: densify-control-shimmer 13s ease-in-out infinite;
+}
+
+.densify-control > *,
+.densify-control .densify-control-content {
+  position: relative;
+  z-index: 4;
 }
 
 .densify-lg > *,
@@ -150,6 +233,7 @@ body {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .orig-lg::before {
@@ -184,11 +268,11 @@ body {
     rgba(255, 255, 255, 0.12) 62%,
     rgba(255, 255, 255, 0.06) 100%
   );
-  -webkit-backdrop-filter: blur(4px) saturate(140%) contrast(108%);
-          backdrop-filter: blur(4px) saturate(140%) contrast(108%);
-  -webkit-filter: url(#glass-distortion);
-          filter: url(#glass-distortion);
-  opacity: 0.78;
+  -webkit-backdrop-filter: blur(0px) saturate(150%) contrast(112%);
+          backdrop-filter: blur(0px) saturate(150%) contrast(112%);
+  -webkit-filter: url(#orig-lg);
+          filter: url(#orig-lg);
+  opacity: 0.9;
 }
 
 .orig-lg > * {

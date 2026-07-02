@@ -6,16 +6,14 @@ import {
   useMotionValueEvent,
   LayoutGroup,
 } from "framer-motion";
-import { useState, useCallback } from "react";
-import {
-  BarbellIcon,
-  CalculatorIcon,
-  SparkleIcon,
-  UsersThreeIcon,
-  DeviceMobileIcon,
-  ListIcon,
-  XIcon,
-} from "@phosphor-icons/react";
+import { useState, useCallback, useRef } from "react";
+import { BarbellIcon } from "@phosphor-icons/react/Barbell";
+import { CalculatorIcon } from "@phosphor-icons/react/Calculator";
+import { DeviceMobileIcon } from "@phosphor-icons/react/DeviceMobile";
+import { ListIcon } from "@phosphor-icons/react/List";
+import { SparkleIcon } from "@phosphor-icons/react/Sparkle";
+import { UsersThreeIcon } from "@phosphor-icons/react/UsersThree";
+import { XIcon } from "@phosphor-icons/react/X";
 
 const navLinks = [
   { id: "calc", label: "Calcular", href: "#calculator", Icon: CalculatorIcon },
@@ -26,6 +24,7 @@ const navLinks = [
 const spring     = { type: "spring" as const, stiffness: 320, damping: 32, mass: 1.0 };
 const softSpring = { type: "spring" as const, stiffness: 180, damping: 24, mass: 0.9 };
 const fadeEase   = { duration: 0.28, ease: [0.4, 0, 0.2, 1] } as const;
+const NAV_OFFSET = 84;
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -34,22 +33,67 @@ export default function Navbar() {
   const [mobileOpen,   setMobileOpen]   = useState(false);
   const [hovered,      setHovered]      = useState<string | null>(null);
   const [navHovered,   setNavHovered]   = useState(false);
+  const scrolledRef = useRef(false);
+  const heroScrolledRef = useRef(false);
 
   useMotionValueEvent(scrollY, "change", (v) => {
-    setScrolled(v > 60);
-    setHeroScrolled(v > 480);
+    const nextScrolled = v > 60;
+    const nextHeroScrolled = v > 480;
+
+    if (scrolledRef.current !== nextScrolled) {
+      scrolledRef.current = nextScrolled;
+      setScrolled(nextScrolled);
+    }
+
+    if (heroScrolledRef.current !== nextHeroScrolled) {
+      heroScrolledRef.current = nextHeroScrolled;
+      setHeroScrolled(nextHeroScrolled);
+    }
   });
 
   const isCollapsed = heroScrolled && !navHovered;
 
+  const scrollToHref = useCallback((href: string) => {
+    const id = href === "#" ? "" : href.replace(/^#/, "");
+
+    if (!id) {
+      window.history.replaceState(null, "", window.location.pathname);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const run = (attempt: number) => {
+      const target = document.getElementById(id);
+      if (!target) {
+        if (attempt < 8) {
+          window.setTimeout(() => run(attempt + 1), 50);
+          return;
+        }
+
+        window.location.hash = id;
+        return;
+      }
+
+      const top = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+      window.history.replaceState(null, "", `#${id}`);
+      window.scrollTo({ top, behavior: "smooth" });
+    };
+
+    run(0);
+  }, []);
+
   const scrollTo = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (!target) return;
-    const offset = 80; // altura da navbar + respiro
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: "smooth" });
-  }, []);
+    scrollToHref(href);
+  }, [scrollToHref]);
+
+  const scrollToMobile = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => scrollToHref(href));
+    });
+  }, [scrollToHref]);
 
   return (
     <div className="fixed top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
@@ -75,7 +119,7 @@ export default function Navbar() {
           <div className="flex items-center gap-1 px-3 py-2.5">
 
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2 px-2 py-1 rounded-full cursor-pointer">
+            <a href="#" onClick={(e) => scrollTo(e, "#")} className="flex items-center gap-2 px-2 py-1 rounded-full cursor-pointer">
               <motion.div
                 key={`barbell-${heroScrolled}`}
                 whileHover={{ scale: 1.15, rotate: -12 }}
@@ -166,6 +210,7 @@ export default function Navbar() {
                 <motion.a
                   key="cta-full"
                   href="#download"
+                  onClick={(e) => scrollTo(e, "#download")}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
@@ -181,6 +226,7 @@ export default function Navbar() {
                 <motion.a
                   key="cta-icon"
                   href="#download"
+                  onClick={(e) => scrollTo(e, "#download")}
                   initial={{ opacity: 0, scale: 0.3, rotate: 90 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   exit={{ opacity: 0, scale: 0.3, rotate: -90 }}
@@ -232,7 +278,7 @@ export default function Navbar() {
                     <motion.a
                       key={link.id}
                       href={link.href}
-                      onClick={(e) => { scrollTo(e, link.href); setMobileOpen(false); }}
+                      onClick={(e) => scrollToMobile(e, link.href)}
                       initial={{ opacity: 0, x: -14 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.055, ...spring }}
@@ -244,7 +290,7 @@ export default function Navbar() {
                   ))}
                   <motion.a
                     href="#download"
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => scrollToMobile(e, "#download")}
                     initial={{ opacity: 0, x: -14 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.17, ...spring }}

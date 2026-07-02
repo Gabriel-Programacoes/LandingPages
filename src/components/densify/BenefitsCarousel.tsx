@@ -1,14 +1,12 @@
 "use client";
 
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useRef, useCallback } from "react";
-import {
-  ForkKnifeIcon,
-  BarbellIcon,
-  ChartLineUpIcon,
-  HouseSimpleIcon,
-  UsersThreeIcon,
-} from "@phosphor-icons/react";
+import { CSSProperties, useCallback, useRef } from "react";
+import { BarbellIcon } from "@phosphor-icons/react/Barbell";
+import { ChartLineUpIcon } from "@phosphor-icons/react/ChartLineUp";
+import { ForkKnifeIcon } from "@phosphor-icons/react/ForkKnife";
+import { HouseSimpleIcon } from "@phosphor-icons/react/HouseSimple";
+import { UsersThreeIcon } from "@phosphor-icons/react/UsersThree";
 
 const benefits = [
   {
@@ -88,6 +86,19 @@ const CARD_W = 340;
 const GAP = 20;
 const TOTAL_W = (CARD_W + GAP) * benefits.length; // width of one full set
 const doubled = [...benefits, ...benefits];
+const marqueeStyle: CSSProperties = {
+  display: "flex",
+  width: (CARD_W + GAP) * doubled.length,
+  animation: `densify-marquee ${benefits.length * 4}s linear infinite`,
+};
+const viewportStyle: CSSProperties = {
+  overflowX: "hidden",
+  overflowY: "visible",
+  paddingTop: 12,
+  paddingBottom: 20,
+  maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+};
 
 export default function BenefitsCarousel() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -112,7 +123,7 @@ export default function BenefitsCarousel() {
   const orb2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   return (
-    <section id="benefits" ref={sectionRef} className="relative py-24">
+    <section id="benefits" ref={sectionRef} className="densify-deferred-section relative py-24">
       {/* Marquee keyframe */}
       <style>{`
         @keyframes densify-marquee {
@@ -159,43 +170,24 @@ export default function BenefitsCarousel() {
           onMouseLeave={resumeTrack}
           onTouchStart={pauseTrack}
           onTouchEnd={resumeTrack}
-          style={{
-            overflowX: "hidden",
-            overflowY: "visible",
-            paddingTop: 12,
-            paddingBottom: 20,
-            maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          }}
+          style={viewportStyle}
         >
           {/* Animated track */}
           <div
             ref={trackRef}
-            style={{
-              display: "flex",
-              width: (CARD_W + GAP) * doubled.length,
-              animation: `densify-marquee ${benefits.length * 4}s linear infinite`,
-            }}
+            style={marqueeStyle}
           >
             {doubled.map((b, i) => (
               <div
                 key={i}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = b.shadowHover;
-                  e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = b.shadow;
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                }}
-                className="liquid-glass group relative flex-shrink-0 rounded-[28px] bg-white/30 border border-white/55 p-7 cursor-default"
+                className="liquid-glass densify-benefit-card group relative flex-shrink-0 rounded-[28px] bg-white/30 border border-white/55 p-7 cursor-default"
                 style={{
+                  "--benefit-accent": b.accent,
+                  "--benefit-shadow": b.shadow,
+                  "--benefit-shadow-hover": b.shadowHover,
                   width: CARD_W,
                   marginRight: GAP,
-                  boxShadow: b.shadow,
-                  transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                  transform: "translateY(0) scale(1)",
-                }}
+                } as CSSProperties}
               >
                 {/* Gradient glow on hover */}
                 <div className={`absolute inset-0 rounded-[28px] bg-gradient-to-br ${b.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -212,8 +204,7 @@ export default function BenefitsCarousel() {
                       {b.num}
                     </span>
                     <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center border shadow-sm"
-                      style={{ background: `${b.accent}18`, borderColor: `${b.accent}30` }}
+                      className="densify-benefit-icon w-12 h-12 rounded-2xl flex items-center justify-center border shadow-sm"
                     >
                       <b.Icon size={24} weight="duotone" color={b.accent} />
                     </div>

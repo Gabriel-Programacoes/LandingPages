@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { StarIcon, QuotesIcon } from "@phosphor-icons/react";
+import { QuotesIcon } from "@phosphor-icons/react/Quotes";
+import { StarIcon } from "@phosphor-icons/react/Star";
 
 const testimonials = [
 	{
@@ -67,11 +68,17 @@ const testimonials = [
 		result: "4 meses consecutivos",
 	},
 ];
+const testimonialColumns = [
+	testimonials.filter((_, i) => i % 3 === 0),
+	testimonials.filter((_, i) => i % 3 === 1),
+	testimonials.filter((_, i) => i % 3 === 2),
+];
+const starIndices = [0, 1, 2, 3, 4];
 
 function Stars({ n }: { n: number }) {
 	return (
 		<div className="flex gap-0.5">
-			{[...Array(n)].map((_, i) => (
+			{starIndices.slice(0, n).map((i) => (
 				<StarIcon key={i} size={13} weight="fill" color="#f0b830" />
 			))}
 		</div>
@@ -79,12 +86,8 @@ function Stars({ n }: { n: number }) {
 }
 
 export default function TestimonialsSection() {
-	const col1 = testimonials.filter((_, i) => i % 3 === 0);
-	const col2 = testimonials.filter((_, i) => i % 3 === 1);
-	const col3 = testimonials.filter((_, i) => i % 3 === 2);
-
 	return (
-		<section id="testimonials" className="relative py-28 overflow-hidden">
+		<section id="testimonials" className="densify-deferred-section relative py-28 overflow-hidden">
 			{/* Background */}
 			<div className="absolute inset-0 bg-gradient-to-br from-[#1a2a48] via-[#24365a] to-[#30204a]" />
 			<div className="absolute top-1/4 left-[-5%] w-[500px] h-[500px] rounded-full bg-[#4070b0]/12 blur-[110px] pointer-events-none" />
@@ -124,7 +127,7 @@ export default function TestimonialsSection() {
 						</div>
 						<div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/8 border border-white/12 self-start sm:self-auto">
 							<div className="flex">
-								{[...Array(5)].map((_, i) => (
+								{starIndices.map((i) => (
 									<StarIcon key={i} size={16} weight="fill" color="#f0b830" />
 								))}
 							</div>
@@ -138,7 +141,7 @@ export default function TestimonialsSection() {
 
 				{/* Masonry grid */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-					{[col1, col2, col3].map((col, colIdx) => (
+					{testimonialColumns.map((col, colIdx) => (
 						<div
 							key={colIdx}
 							className="flex flex-col gap-4"

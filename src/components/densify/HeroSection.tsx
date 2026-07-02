@@ -2,12 +2,10 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import {
-  ArrowRightIcon,
-  BarbellIcon,
-  ChartLineUpIcon,
-  ClockCountdownIcon,
-} from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react/ArrowRight";
+import { BarbellIcon } from "@phosphor-icons/react/Barbell";
+import { ChartLineUpIcon } from "@phosphor-icons/react/ChartLineUp";
+import { ClockCountdownIcon } from "@phosphor-icons/react/ClockCountdown";
 
 const metrics = [
   { label: "Treino médio", value: "40 min" },
@@ -74,9 +72,9 @@ export default function HeroSection() {
           >
             <a
               href="#calculator"
-              className="densify-lg inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/70 bg-white/25 text-[#1e3050] font-archivo font-bold"
+              className="densify-lg densify-control inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/70 bg-white/25 text-[#1e3050] font-archivo font-bold"
             >
-              Calcular Meu Plano
+              <span className="densify-control-content">Calcular Meu Plano</span>
               <ArrowRightIcon size={16} weight="bold" />
             </a>
             <a href="#benefits" className="inline-flex items-center gap-2 px-5 py-3 text-[#3a5070]/80 hover:text-[#1e3050] font-archivo text-sm">
@@ -130,4 +128,3 @@ export default function HeroSection() {
     </section>
   );
 }
-

@@ -2,7 +2,8 @@
 // Already code-split via dynamic() on the page — bundle loads lazily (bundle-dynamic-imports)
 // Note: @phosphor-icons/react requires React context so this must remain a Client Component
 import { SiInstagram, SiX, SiYoutube, SiApple, SiGoogleplay } from "@icons-pack/react-simple-icons";
-import { BarbellIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ArrowUpRight";
+import { BarbellIcon } from "@phosphor-icons/react/Barbell";
 
 const socials = [
   { icon: SiInstagram, href: "#", label: "Instagram" },
@@ -15,10 +16,11 @@ const footerLinks = [
   { group: "Legal", links: ["Privacidade", "Termos", "Cookies"] },
   { group: "Suporte", links: ["Central de Ajuda", "Contato", "Status"] },
 ];
+const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-[#141e35] to-[#0d1525]">
+    <footer className="densify-deferred-section relative bg-gradient-to-b from-[#141e35] to-[#0d1525]">
       {/* Top accent line */}
       <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -97,7 +99,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/8">
           <p className="font-archivo text-xs text-white/25">
-            © {new Date().getFullYear()} Densify. Todos os direitos reservados.
+            © {currentYear} Densify. Todos os direitos reservados.
           </p>
           <p className="font-archivo text-xs text-white/20">
             Feito para quem não tem tempo a perder.

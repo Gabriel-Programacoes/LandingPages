@@ -1,14 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { SiApple, SiGoogleplay } from "@icons-pack/react-simple-icons";
-import {
-  LockSimpleIcon,
-  StarIcon,
-  ArrowCounterClockwiseIcon,
-  DeviceMobileIcon,
-  RocketLaunchIcon,
-  UsersThreeIcon,
-} from "@phosphor-icons/react";
+import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react/ArrowCounterClockwise";
+import { DeviceMobileIcon } from "@phosphor-icons/react/DeviceMobile";
+import { LockSimpleIcon } from "@phosphor-icons/react/LockSimple";
+import { RocketLaunchIcon } from "@phosphor-icons/react/RocketLaunch";
+import { StarIcon } from "@phosphor-icons/react/Star";
+import { UsersThreeIcon } from "@phosphor-icons/react/UsersThree";
 
 const perks = [
   { Icon: LockSimpleIcon, text: "Sem cartão de crédito" },
@@ -21,10 +19,15 @@ const highlights = [
   { Icon: RocketLaunchIcon, label: "Onboarding em 2 min", sub: "Já começa hoje" },
   { Icon: UsersThreeIcon, label: "12.000+ usuários", sub: "Comunidade ativa" },
 ];
+const progressMetrics = [
+  { label: "Força", val: 82, color: "#4a7fb5" },
+  { label: "Resistência", val: 67, color: "#c07050" },
+  { label: "Recuperação", val: 90, color: "#3a8a5a" },
+];
 
 export default function CTASection() {
   return (
-    <section id="download" className="relative overflow-hidden">
+    <section id="download" className="densify-deferred-section relative overflow-hidden">
       {/* Two-tone split background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#fceee6] via-[#f5e8f2] to-[#e6eef8]" />
 
@@ -147,11 +150,7 @@ export default function CTASection() {
 
               {/* Progress visualization */}
               <div className="space-y-3 mb-6">
-                {[
-                  { label: "Força", val: 82, color: "#4a7fb5" },
-                  { label: "Resistência", val: 67, color: "#c07050" },
-                  { label: "Recuperação", val: 90, color: "#3a8a5a" },
-                ].map((m) => (
+                {progressMetrics.map((m) => (
                   <div key={m.label}>
                     <div className="flex justify-between mb-1">
                       <span className="font-archivo text-xs text-[#3a5070]/60">{m.label}</span>
