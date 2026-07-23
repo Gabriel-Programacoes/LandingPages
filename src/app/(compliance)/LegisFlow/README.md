@@ -1,226 +1,121 @@
 <div align="center">
 
-<br />
+# ⚖️ LEGISFLOW
 
-# ⚖️ LegisFlow
+### Automação e compliance paralegal
 
-### *Automated Compliance & Paralegal Management · B2B SaaS*
+[![Route](https://img.shields.io/badge/ROTA-%2FLegisFlow-4ade80?style=for-the-badge&logo=next.js)](https://landingpages-hub.vercel.app/LegisFlow)
+[![Category](https://img.shields.io/badge/CATEGORIA-B2B_COMPLIANCE-111?style=for-the-badge)](#)
+[![Validation](https://img.shields.io/badge/VALIDAÇÃO-ZOD-3E67B1?style=for-the-badge&logo=zod)](https://zod.dev)
 
-<br />
-
-[![Category](https://img.shields.io/badge/Category-Legal_Compliance-4ade80?style=for-the-badge&logo=scaleway&logoColor=white)](#)
-[![Route](https://img.shields.io/badge/Route-%2FLegisFlow-4ade80?style=for-the-badge&logo=next.js&logoColor=white)](https://landingpages-hub.vercel.app/LegisFlow)
-[![Design](https://img.shields.io/badge/Design-Corporate_Brutalism-1a2a1a?style=for-the-badge)](#)
-[![Target](https://img.shields.io/badge/Target-B2B_Lead_Gen-4ade80?style=for-the-badge&logo=briefcase&logoColor=white)](#)
-
-<br />
-
-> **"Automation and Paralegal Compliance"**
-> A high-conversion B2B landing page targeting accounting firms and paralegal departments.
+[**Abrir experiência ↗**](https://landingpages-hub.vercel.app/LegisFlow) ·
+[**Voltar ao Hub**](../../../../../README.md)
 
 </div>
 
 ---
 
-## 🎯 Overview
+## ◈ Visão do produto
 
 | | |
 |---|---|
-| **Product** | LegisFlow — Paralegal & Environmental Compliance SaaS |
-| **Audience** | Accounting offices & paralegal departments |
-| **Goal** | High-quality B2B lead generation → demo scheduling |
-| **Route** | `/LegisFlow` |
-| **Route Group** | `(compliance)` |
-| **Form Backend** | Next.js Server Actions + Zod (Edge validation) |
+| **Proposta** | Centralizar obrigações paralegais e ambientais |
+| **Público** | Escritórios contábeis e departamentos paralegais |
+| **Conversão** | Agendamento de demonstração |
+| **Rota** | `/LegisFlow` |
+| **Grupo** | `(compliance)` |
 
----
+LegisFlow é uma landing page B2B conceitual que apresenta monitoramento de
+obrigações, organização documental e leitura operacional de conformidade.
 
-## 🎨 Design Direction — Corporate Brutalism
+## ✦ Experiência
 
-LegisFlow **rejects** the "friendly cloud software" cliché. The aesthetic is **Moderate Corporate Brutalism** — clear structure, visible grid lines, hard shadows, precision typography. It communicates that bureaucratic chaos is now *framed and under absolute control.*
+<table>
+<tr><td><strong>📣 Hero</strong><br/>Headline monumental e métricas animadas.</td><td><strong>↔ Marquee</strong><br/>Faixa contínua de contexto de mercado.</td></tr>
+<tr><td><strong>▦ Bento</strong><br/>Módulos de integração, alertas e status.</td><td><strong>✍ Formulário</strong><br/>Validação no servidor e retorno por campo.</td></tr>
+</table>
 
-### The Balance Point
+## 🎨 Sistema visual
 
-To avoid oppressive brutalism, **generous negative space** is used in breathing areas — giving the feeling that previously chaotic compliance processes are now organized and calm.
+| Elemento | Direção |
+|---|---|
+| **Paleta** | Off-white documental, carvão e verde utilitário |
+| **Tipografia** | Bebas Neue, Archivo e Space Mono |
+| **Geometria** | Linhas rígidas, pouca curvatura e sombras duras |
+| **Motion** | Revelações precisas, contadores e marquee linear |
 
-### Colour Palette
+A direção de arte usa brutalismo corporativo moderado: estrutura forte e contraste
+alto, equilibrados por espaço negativo e hierarquia legível.
 
-| Swatch | Name | Hex | Usage |
-|--------|------|-----|-------|
-| ⬜ | Off-White | `#F5F2ED` | Background (official document feel) |
-| ⬛ | Pure Black / Charcoal | `#0F0F0F` | Structural lines, typography, hard shadows |
-| 🟢 | Utility Green | `#4ade80` | Interactive elements, IBAMA module accent |
-| 🩶 | Mid-Grey | `#6B7280` | Body text, secondary labels |
+## 🧩 Componentes
 
-### Hard Shadow System
+```text
+src/app/(compliance)/LegisFlow/
+├── page.tsx
+└── actions.ts
 
-```css
-/* Brutalist hard shadow — no blur, no softness */
-box-shadow: 4px 4px 0px 0px #0F0F0F;
-
-/* Hover state: element lifts, shadow fills the gap */
-transform: translateY(-4px);
-box-shadow: 8px 8px 0px 0px #0F0F0F;
-```
-
-> **Zero glassmorphism.** No blur, no frosted glass, no translucency. Every surface is solid.
-
----
-
-## 🔤 Typography
-
-| Role | Font Options | Scale | Notes |
-|------|-------------|-------|-------|
-| **Display / Headlines** | Tanker · Druk · Bebas Neue Pro · Tungsten | Massive (clamp 64px→120px) | Justified to container edges, tight tracking, forms solid text blocks |
-| **Body / UI / Data** | Archivo · Space Grotesk · Switzer | 14–16px | Geometric grotesque; data-loyal, high legibility |
-
-> The display font **is** the design element — used at monumental scale as the central visual anchor.
-
----
-
-## 🧩 Components
-
-```
 src/components/legisflow/
-├── 📄 HeroSection.tsx          ← 85vh · monumental typography · solid CTA
-├── 📄 MarqueeSection.tsx       ← Continuous client logo ticker (black borders)
-├── 📄 BentoSection.tsx         ← Asymmetric feature bento box
-└── 📄 LeadFormSection.tsx      ← Terminal-style demo scheduling form
+├── HeroSection.tsx
+├── MarqueeSection.tsx
+├── BentoSection.tsx
+└── LeadFormSection.tsx
 ```
 
-### Component Responsibilities
+`BentoSection` e `LeadFormSection` são carregados dinamicamente por estarem abaixo
+da dobra.
 
-#### `HeroSection`
-- Occupies the first `85vh`
-- Headline text **breaks the screen** in Tanker/Druk, justified left, touching container edges
-- CTA: flat solid button — **sharp corners**, no border-radius, hard border
-- Animation: text blocks enter with rapid-decelerate easing `cubic-bezier(0.22, 1, 0.36, 1)`
+## ↯ Pipeline do formulário
 
-#### `MarqueeSection`
-- Full-width horizontal ticker, no gaps
-- Delimited by **1–2px solid black** borders top and bottom
-- Client logos in **monochrome, high contrast** — mathematical precision scroll speed
-
-#### `BentoSection`
-
-The asymmetric bento grid — the design's *lightness break*:
-
-| Block | Size | Content |
-|-------|------|---------|
-| **Bloco 1** | Wide (2-col) | Data Integration — terminal/code snippet showing API data ingestion |
-| **Bloco 2** | Square | Auto-Monitoring — stacked deadline alert UI components |
-| **Bloco 3** | Tall (2-row) | Visual Mockup — dashboard showing "Em dia / Pendente" CNPJ status |
-| **Bloco 4** | Square · **Green** | IBAMA Environmental Module — Utility Green accent + heavy typography |
-
-Hover behaviour — no glow, no blur. Instead: **lifts 4px** + hard black shadow fills the gap below. Feels like pressing a mechanical panel button.
-
-#### `LeadFormSection`
-- Terminal/data-entry aesthetic
-- Large fields, **monospaced placeholder text**
-- Strict validation feedback — instant, no fake loading
-- Backed by **Next.js Server Actions** + **Zod** Edge validation
-
----
-
-## 🎬 Motion & Animation
-
-| Effect | Easing | Notes |
-|--------|--------|-------|
-| Bento reveal on scroll | `cubic-bezier(0.22, 1, 0.36, 1)` | Fast start, controlled deceleration |
-| Staggered bento items | `staggerChildren: 0.08` | Elements enter bottom→top sequentially |
-| Bento hover lift | `translateY(-4px)` + hard shadow shift | Zero elasticity — mechanical feel |
-| Marquee scroll | Linear, constant velocity | No easing — mathematical precision |
-| Form error feedback | Instant (0ms delay) | No fake loaders; builds B2B trust |
-
-> **Philosophy:** Fluid but precise. The rhythm of a well-calibrated machine — no elastic or jelly-like delays.
-
----
-
-## ⚙️ Engineering Specs
-
-### Stack
-
-| Technology | Version | Usage |
-|-----------|---------|-------|
-| Next.js | 16.2 | App Router, Server Actions |
-| React | 19 | Client + Server components |
-| Tailwind CSS | 4 | Extended with CSS custom properties for brutalist palette |
-| Framer Motion | 12 | Stagger orchestration, bezier animations |
-| Zod | ^4 | Server-side schema validation (Edge runtime) |
-
-### Custom Tailwind Extensions
-
-```css
-/* globals.css / layout.css */
-:root {
-  --color-off-white: #F5F2ED;
-  --color-charcoal: #0F0F0F;
-  --color-utility-green: #4ade80;
-  --shadow-hard: 4px 4px 0px 0px #0F0F0F;
-  --shadow-hard-hover: 8px 8px 0px 0px #0F0F0F;
-}
+```text
+LeadFormSection
+    ↓ useActionState
+submitLeadForm (Server Action)
+    ↓
+Zod safeParse
+    ├── inválido → erros agrupados por campo
+    └── válido   → confirmação demonstrativa
 ```
 
-### Server Action (Lead Form)
+Campos atuais: nome, empresa, e-mail, telefone e CNPJ opcional. O estado de envio
+é exposto por `useFormStatus`.
 
-```typescript
-// actions.ts — runs on the Edge
-"use server";
+## ⚙ Stack
 
-import { z } from "zod";
+`Next.js Server Actions` · `React useActionState` · `Zod` · `Tailwind CSS` ·
+`Framer Motion` · `TypeScript`
 
-const LeadSchema = z.object({
-  name: z.string().min(2),
-  company: z.string().min(2),
-  email: z.string().email(),
-  role: z.string().min(2),
-});
+## 🗺 Estrutura da página
 
-export async function submitLead(formData: FormData) {
-  const result = LeadSchema.safeParse(Object.fromEntries(formData));
-  if (!result.success) {
-    return { error: result.error.flatten() };
-  }
-  // → Send to CRM / email
-  return { success: true };
-}
+```text
+/LegisFlow
+├── Hero
+├── Marquee
+├── Feature Bento
+├── Lead Form
+└── Footer
 ```
 
-### Performance & Security
+## 🔐 Estado e segurança
 
-- Server Actions eliminate client-side fetch — **no API route exposure**
-- Zod validation runs at the **Edge** before any business logic
-- Zero fake loading states — instant success/error feedback builds B2B trust
-- Forms work with **JavaScript disabled** (progressive enhancement)
+A validação atual ocorre no servidor, mas o projeto é uma demonstração. Antes de
+produção, o fluxo precisa de:
 
----
+- persistência em banco ou integração com CRM;
+- rate limiting, proteção antispam e auditoria;
+- política de privacidade e base legal para tratamento de dados;
+- envio transacional e observabilidade;
+- remoção ou proteção adequada dos logs de dados recebidos.
 
-## 📐 Page Structure
+## ⚠ Escopo atual
 
-```
-/ LegisFlow
-├── 🔝 Hero Section         (85vh · monumental type · solid CTA)
-├── 📜 Marquee Section      (client logos · continuous ticker)
-├── 🧱 Bento Section        (asymmetric feature grid · 4 blocks)
-└── 📋 Lead Form Section    (terminal-style · Server Action)
-```
-
----
-
-## 🔗 Related
-
-- [Monorepo README](../../../../../README.md)
-- [Densify](../../(fitness)/Densify/README.md)
+O envio simula latência, registra o conteúdo no servidor e retorna sucesso. Não há
+banco de dados, e-mail, CRM ou agendamento real. A página não deve ser tratada como
+um sistema jurídico operacional.
 
 ---
 
 <div align="center">
 
-**LegisFlow** · Part of the [Landing Pages HUB](../../../../../README.md)
-
-[![Zod](https://img.shields.io/badge/-Zod-3E67B1?style=flat-square&logo=zod&logoColor=white)](https://zod.dev)
-[![Framer Motion](https://img.shields.io/badge/-Framer_Motion-FF0055?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion)
-[![Tailwind CSS](https://img.shields.io/badge/-Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+**LegisFlow** · parte do [Landing Page Hub](../../../../../README.md)
 
 </div>
-

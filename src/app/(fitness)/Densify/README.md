@@ -1,199 +1,120 @@
 <div align="center">
 
-<br />
+# 💪 DENSIFY
 
-# 💪 Densify
+### Fitness planning para rotinas impossíveis
 
-### *High-Density Fitness Planning · Hypertrophy Results for Impossible Schedules*
+[![Route](https://img.shields.io/badge/ROTA-%2FDensify-6aabf0?style=for-the-badge&logo=next.js)](https://landingpages-hub.vercel.app/Densify)
+[![Category](https://img.shields.io/badge/CATEGORIA-FITNESS-efad94?style=for-the-badge)](#)
+[![UI](https://img.shields.io/badge/UI-LIQUID_GLASS-dcecff?style=for-the-badge)](#)
 
-<br />
-
-[![Category](https://img.shields.io/badge/Category-Fitness_%26_Nutrition-6aabf0?style=for-the-badge&logo=apple&logoColor=white)](#)
-[![Route](https://img.shields.io/badge/Route-%2FDensify-6aabf0?style=for-the-badge&logo=next.js&logoColor=white)](https://landingpages-hub.vercel.app/Densify)
-[![Design](https://img.shields.io/badge/Design-Liquid_Glass_%C2%B7_Pastel-b8d4f5?style=for-the-badge)](#)
-[![Mobile First](https://img.shields.io/badge/Mobile-First-6aabf0?style=for-the-badge&logo=ios&logoColor=white)](#)
-
-<br />
-
-> **"Real Results for Impossible Routines"**
-> A landing page for time-poor professionals who want hypertrophy gains from 40-minute sessions.
+[**Abrir experiência ↗**](https://landingpages-hub.vercel.app/Densify) ·
+[**Voltar ao Hub**](../../../../../README.md)
 
 </div>
 
 ---
 
-## 🎯 Overview
+## ◈ Visão do produto
 
 | | |
 |---|---|
-| **Product** | Densify — High-Density Fitness Planning App |
-| **Audience** | Professionals with scarce time, focused on hypertrophy |
-| **Goal** | Immediate user retention via interactive calculator → download conversion |
-| **Route** | `/Densify` |
-| **Route Group** | `(fitness)` |
+| **Proposta** | Planejamento fitness de alta densidade |
+| **Público** | Pessoas com pouco tempo e foco em hipertrofia |
+| **Objetivo da página** | Conduzir da descoberta à simulação e ao download |
+| **Rota** | `/Densify` |
+| **Grupo** | `(fitness)` |
 
----
+Densify troca a estética agressiva de academias por uma interface clara, suave e
+orientada a produto. Gradientes pastel e superfícies translúcidas reduzem a carga
+visual enquanto os controles mantêm a experiência funcional.
 
-## 🎨 Design Direction — Liquid Glass Minimalism
+## ✦ Experiência
 
-Densify **breaks completely** from the dark/aggressive gym-app archetype. The aesthetic is **Luxury Minimalism**: mental lightness for users with already heavy routines.
+<table>
+<tr><td><strong>🌅 Hero</strong><br/>Proposta de valor, métricas e CTA.</td><td><strong>🧭 Navbar</strong><br/>Estado no scroll e menu responsivo.</td></tr>
+<tr><td><strong>🧮 Calculadora</strong><br/>Fluxo multipasso com resultado personalizado.</td><td><strong>🎠 Benefícios</strong><br/>Carrossel horizontal navegável.</td></tr>
+<tr><td><strong>💬 Prova social</strong><br/>Cards de depoimentos e métricas.</td><td><strong>📲 Conversão</strong><br/>CTAs para plataformas mobile.</td></tr>
+</table>
 
-### Colour Palette
+### Calculadora
 
-| Swatch | Name | Hex | Usage |
-|--------|------|-----|-------|
-| 🔵 | Pale Sky | `#6aabf0` | Primary accent, backgrounds |
-| 🍑 | Pastel Petal / Peach | `#f7c5b0` | Hero highlights |
-| 🟠 | Apricot Cream | `#f4b98e` | Secondary CTAs, warnings |
-| ⬜ | Glass White | `rgba(255,255,255,0.10)` | Card backgrounds |
+O fluxo mantém localmente etapa, objetivo, perfil, dieta, disponibilidade e
+resultado. `AnimatePresence` coordena as transições, enquanto os cálculos derivados
+são memorizados no cliente. A simulação é demonstrativa e não substitui orientação
+profissional.
 
-### Liquid Glass Effect
+## 🎨 Sistema visual
 
-The signature material — applied to all cards, modals, and CTAs:
+| Elemento | Direção |
+|---|---|
+| **Paleta** | Azul céu, pêssego, lavanda e branco translúcido |
+| **Tipografia** | Nunito para display e Archivo para UI |
+| **Material** | Glassmorphism com blur, borda e refração |
+| **Motion** | Parallax, springs, stagger e transições de etapa |
 
-```css
-/* Core liquid glass recipe */
-backdrop-filter: blur(20px) saturate(150%);
-background: rgba(255, 255, 255, 0.08);
-border: 1px solid rgba(255, 255, 255, 0.20);
-box-shadow:
-  0 4px 24px rgba(106, 171, 240, 0.12),
-  inset 0 1px 0 rgba(255, 255, 255, 0.25);
-border-radius: 24px;
-```
+O layout do grupo fitness registra filtros SVG animados com `feTurbulence` e
+`feDisplacementMap`. Há variações para superfícies grandes e controles pequenos,
+preservando a legibilidade do texto.
 
-> Cards have **no solid colours** — they blur, refract, and reflect the background in real time as the user scrolls.
+## 🧩 Componentes
 
----
-
-## 🔤 Typography
-
-| Role | Font | Weight | Notes |
-|------|------|--------|-------|
-| **Display / Headlines** | Pilcrow Rounded | Bold / Black | Friendly, tac­tile feel; extreme corner radius synergy |
-| **Body / UI / Data** | Archivo | Regular / Medium | Geometric, technical; perfect for calorie/macro readouts |
-
----
-
-## 🧩 Components
-
-```
+```text
 src/components/densify/
-├── 📄 Navbar.tsx               ← Sticky translucent nav
-├── 📄 HeroSection.tsx          ← Full-bleed gradient + glass CTA pill
-├── 📄 CalculatorSection.tsx    ← Multi-step interactive macro calculator
-├── 📄 BenefitsCarousel.tsx     ← Horizontal image carousel + glass tags
-├── 📄 TestimonialsSection.tsx  ← Masonry grid of glass testimonial cards
-├── 📄 CTASection.tsx           ← Download conversion CTA
-└── 📄 Footer.tsx
+├── Navbar.tsx
+├── HeroSection.tsx
+├── BenefitsCarousel.tsx
+├── CalculatorSection.tsx
+├── TestimonialsSection.tsx
+├── CTASection.tsx
+└── Footer.tsx
 ```
 
-### Component Responsibilities
+Os componentes abaixo da dobra são carregados dinamicamente pela página, reduzindo
+o JavaScript necessário no carregamento inicial.
 
-#### `HeroSection`
-- Animated soft-gradient background (Peach × Pale Sky)
-- Headline in Pilcrow Rounded with subtle inner glow
-- Glass-pill CTA button with hover refraction animation
+## ⚙ Stack
 
-#### `CalculatorSection`
-- Step-by-step goal/restriction selector
-- Smooth slide+fade transitions between steps via `AnimatePresence`
-- Output card: circular macro charts on translucent glass
-- Calorie counter rolls like an **odometer** (no instant jumps)
+`Next.js` · `React` · `TypeScript` · `Tailwind CSS` · `Framer Motion` ·
+`Phosphor Icons` · `Radix UI` · `Simple Icons`
 
-#### `BenefitsCarousel`
-- High-res editorial fitness photography
-- Floating glass tags overlay each image (`"Prep in 15 min"`, `"40-min sessions"`)
+## 🗺 Estrutura da página
 
-#### `TestimonialsSection`
-- Masonry layout — testimonials **float** in overlapping glass cards, creating scroll depth
-
----
-
-## 🎬 Motion & Animation
-
-| Effect | Implementation | Notes |
-|--------|---------------|-------|
-| Scroll Parallax | `useScroll` + `useTransform` (Framer Motion) | Background orbs move at different speed from cards |
-| Calculator Steps | `AnimatePresence` | Slide + simultaneous fade mask |
-| Calorie Odometer | Custom `useSpring` counter | Weighted roll feel, not instant |
-| Tap Confirmation | `whileTap: { scale: 1.04 }` | Tactile press feedback before advancing step |
-| Glass Hover | CSS `transition` + `backdrop-filter` | Refraction deepens on hover |
-
----
-
-## ⚙️ Engineering Specs
-
-### Stack
-
-| Technology | Version | Usage |
-|-----------|---------|-------|
-| Next.js | 16.2 | App Router, SSR |
-| React | 19 | `useOptimistic` for zero-lag calculator transitions |
-| Tailwind CSS | 4 | Utility classes + `backdrop-filter` composition |
-| Framer Motion | 12 | Parallax, `AnimatePresence`, spring physics |
-| Radix UI Slider | ^1.3 | Accessible slider inputs in calculator |
-| Radix UI Progress | ^1.1 | Step progress indicator |
-| Phosphor Icons | ^2.1 | UI icon set |
-
-### Key Tailwind Utilities for the Glass Effect
-
-```html
-<!-- Glass card template -->
-<div class="
-  backdrop-blur-2xl
-  bg-white/[0.08]
-  border border-white/20
-  rounded-3xl
-  shadow-[0_4px_24px_rgba(106,171,240,0.12),inset_0_1px_0_rgba(255,255,255,0.25)]
-">
+```text
+/Densify
+├── Navbar
+├── Hero
+├── Benefits Carousel
+├── Calculator
+├── Testimonials
+├── Download CTA
+└── Footer
 ```
 
-### Performance
+## ♿ Responsividade e interação
 
-- **Mobile-first** layout — all interactions designed for touch
-- `useOptimistic` ensures calculator state changes have **zero perceived latency**
-- Framer Motion animations are GPU-composited (transform/opacity only) — no layout thrashing
-- Images use `next/image` with priority loading for above-the-fold content
+- navegação mobile dedicada;
+- controles com rótulos e estados visíveis;
+- movimentos baseados principalmente em `transform` e `opacity`;
+- seções extensas marcadas para renderização diferida;
+- interface adaptada para toque e teclado conforme o controle.
 
-### Accessibility
+## ◇ Rota relacionada
 
-- All sliders and carousels backed by **Radix UI** primitives
-- Full keyboard navigation supported
-- Semantic HTML maintained beneath custom visual layers
+[`/comparison`](https://landingpages-hub.vercel.app/comparison) apresenta uma
+comparação visual dos tratamentos Liquid Glass disponíveis no grupo fitness.
 
----
+## ⚠ Escopo atual
 
-## 📐 Page Structure
-
-```
-/ Densify
-├── 🔝 Navbar              (sticky · glass)
-├── 🌅 Hero Section        (85vh · gradient bg · glass CTA)
-├── 🧮 Calculator Section  (step-by-step · macro output)
-├── 🖼️ Benefits Carousel   (horizontal scroll · glass tags)
-├── 💬 Testimonials        (masonry · glass cards)
-├── 📲 CTA Section         (download conversion)
-└── 🔻 Footer
-```
-
----
-
-## 🔗 Related
-
-- [Liquid Glass Comparison](/comparison) — CSS vs WebGL side-by-side demo
-- [Monorepo README](../../../../../README.md)
-- [LegisFlow](../../(compliance)/LegisFlow/README.md)
+- experiência conceitual, sem autenticação ou conta de usuário;
+- resultados da calculadora não são persistidos;
+- botões de loja funcionam como CTAs de demonstração;
+- conteúdo fitness deve ser validado antes de eventual uso comercial.
 
 ---
 
 <div align="center">
 
-**Densify** · Part of the [Landing Pages HUB](../../../../../README.md)
-
-[![Framer Motion](https://img.shields.io/badge/-Framer_Motion-FF0055?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion)
-[![Radix UI](https://img.shields.io/badge/-Radix_UI-161618?style=flat-square&logo=radix-ui&logoColor=white)](https://www.radix-ui.com)
-[![Tailwind CSS](https://img.shields.io/badge/-Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+**Densify** · parte do [Landing Page Hub](../../../../../README.md)
 
 </div>
-
