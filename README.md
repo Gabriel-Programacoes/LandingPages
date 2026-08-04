@@ -2,7 +2,7 @@
 
 # ✦ LANDING PAGE HUB
 
-### Seis universos visuais. Um laboratório de frontend.
+### Sete universos visuais. Um laboratório de frontend.
 
 Coleção de landing pages autorais construída para explorar direção de arte,
 interfaces de produto, motion, formulários e experiências WebGL.
@@ -32,7 +32,7 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 
 <table>
 <tr>
-<td align="center"><strong>06</strong><br/><sub>PROJETOS</sub></td>
+<td align="center"><strong>07</strong><br/><sub>PROJETOS</sub></td>
 <td align="center"><strong>09</strong><br/><sub>CAPACIDADES</sub></td>
 <td align="center"><strong>06</strong><br/><sub>PREVIEWS AUTORAIS</sub></td>
 <td align="center"><strong>01</strong><br/><sub>HUB INTERATIVO</sub></td>
@@ -107,6 +107,23 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 <a href="./src/app/(fitness)/Densify/README.md">Documentação</a>
 </td>
 </tr>
+<tr>
+<td width="50%" valign="top">
+<h3>🍑 Nexa</h3>
+<p><strong>SAAS · OPERATIONS</strong></p>
+<p>Plataforma B2B completa com direção editorial suave, módulos de produto, planos, FAQ e contato integrado ao WhatsApp.</p>
+<p><code>Product UI</code> <code>Motion</code> <code>WhatsApp</code></p>
+<a href="https://landingpages-hub.vercel.app/Nexa">Abrir projeto ↗</a> ·
+<a href="./src/app/(saas)/Nexa/README.md">Documentação</a>
+</td>
+<td width="50%" valign="top">
+<h3>↗ Nexa / Contato</h3>
+<p><strong>INTERNAL PAGE · LEAD FLOW</strong></p>
+<p>Formulário responsivo que estrutura os dados do lead e transfere a conversa para o WhatsApp com mensagem pré-preenchida.</p>
+<p><code>Forms</code> <code>WhatsApp</code> <code>Responsive</code></p>
+<a href="https://landingpages-hub.vercel.app/Nexa/contato">Abrir contato ↗</a>
+</td>
+</tr>
 </table>
 
 > O Densify também oferece a experiência complementar
@@ -124,6 +141,7 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 | LegisFlow | ●●●●○ | ●●○○○ | ○○○○○ | ●●●●○ | Fluxo B2B validado |
 | Cinematic Ink | ●●●●● | ●●●●○ | ○○○○○ | ○○○○○ | Experiência editorial |
 | Densify | ●●●●● | ●●●○○ | ○○○○○ | ○○○○○ | Produto interativo |
+| Nexa | ●●●●● | ●●●○○ | ○○○○○ | ●○○○○ | Funil SaaS multipágina |
 
 ---
 
@@ -155,7 +173,8 @@ landing-page-hub/
 │   │   ├── (compliance)/              # LegisFlow
 │   │   ├── (engineering)/             # Drafted Obsidian
 │   │   ├── (fitness)/                 # Densify + Comparison
-│   │   └── (immersive)/               # Spectral Core
+│   │   ├── (immersive)/               # Spectral Core
+│   │   └── (saas)/                    # Nexa + página de contato
 │   ├── components/
 │   │   ├── hub/                       # Galeria e previews
 │   │   └── <projeto>/                 # Componentes isolados

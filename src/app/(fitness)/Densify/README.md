@@ -9,7 +9,8 @@
 [![UI](https://img.shields.io/badge/UI-LIQUID_GLASS-dcecff?style=for-the-badge)](#)
 
 [**Abrir experiência ↗**](https://landingpages-hub.vercel.app/Densify) ·
-[**Voltar ao Hub**](../../../../../README.md)
+[**Voltar ao Hub ↗**](https://landingpages-hub.vercel.app) ·
+[**README principal**](../../../../README.md)
 
 </div>
 
@@ -115,6 +116,6 @@ comparação visual dos tratamentos Liquid Glass disponíveis no grupo fitness.
 
 <div align="center">
 
-**Densify** · parte do [Landing Page Hub](../../../../../README.md)
+**Densify** · parte do [Landing Page Hub](../../../../README.md)
 
 </div>

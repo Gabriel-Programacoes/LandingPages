@@ -9,7 +9,8 @@
 [![Motion](https://img.shields.io/badge/MOTION-FRAMER-ff0055?style=for-the-badge&logo=framer)](https://www.framer.com/motion)
 
 [**Abrir experiência ↗**](https://landingpages-hub.vercel.app/DraftedObsidian) ·
-[**Voltar ao Hub**](../../../../../README.md)
+[**Voltar ao Hub ↗**](https://landingpages-hub.vercel.app) ·
+[**README principal**](../../../../README.md)
 
 </div>
 
@@ -94,6 +95,6 @@ API ou CMS.
 
 <div align="center">
 
-**Drafted Obsidian** · parte do [Landing Page Hub](../../../../../README.md)
+**Drafted Obsidian** · parte do [Landing Page Hub](../../../../README.md)
 
 </div>

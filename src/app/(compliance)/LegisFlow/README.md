@@ -9,7 +9,8 @@
 [![Validation](https://img.shields.io/badge/VALIDAÇÃO-ZOD-3E67B1?style=for-the-badge&logo=zod)](https://zod.dev)
 
 [**Abrir experiência ↗**](https://landingpages-hub.vercel.app/LegisFlow) ·
-[**Voltar ao Hub**](../../../../../README.md)
+[**Voltar ao Hub ↗**](https://landingpages-hub.vercel.app) ·
+[**README principal**](../../../../README.md)
 
 </div>
 
@@ -116,6 +117,6 @@ um sistema jurídico operacional.
 
 <div align="center">
 
-**LegisFlow** · parte do [Landing Page Hub](../../../../../README.md)
+**LegisFlow** · parte do [Landing Page Hub](../../../../README.md)
 
 </div>

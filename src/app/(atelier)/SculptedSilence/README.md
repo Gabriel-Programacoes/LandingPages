@@ -9,7 +9,8 @@
 [![Motion](https://img.shields.io/badge/MOTION-FRAMER-ff0055?style=for-the-badge&logo=framer)](https://www.framer.com/motion)
 
 [**Abrir experiência ↗**](https://landingpages-hub.vercel.app/SculptedSilence) ·
-[**Voltar ao Hub**](../../../../../README.md)
+[**Voltar ao Hub ↗**](https://landingpages-hub.vercel.app) ·
+[**README principal**](../../../../README.md)
 
 </div>
 
@@ -97,6 +98,6 @@ pedido de visualização privada não está conectado a um serviço de agendamen
 
 <div align="center">
 
-**Sculpted Silence** · parte do [Landing Page Hub](../../../../../README.md)
+**Sculpted Silence** · parte do [Landing Page Hub](../../../../README.md)
 
 </div>

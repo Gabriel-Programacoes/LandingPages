@@ -54,6 +54,39 @@ export type Project = {
 
 export const PROJECTS = [
   {
+    slug: "/Nexa",
+    category: "B2B SaaS / Operations",
+    name: "Nexa",
+    description:
+      "A conversion-focused SaaS platform with Aceternity-inspired light effects, product storytelling, pricing, FAQ, and WhatsApp lead flow.",
+    accent: "#c7ff48",
+    accentDim: "rgba(199,255,72,0.07)",
+    accentBorder: "rgba(199,255,72,0.24)",
+    accentGlow: "rgba(199,255,72,0.20)",
+    tag: "SAAS",
+    dot: "#c7ff48",
+    extras: [{ label: "Contact flow", href: "/Nexa/contato" }],
+    technologies: ["Next.js", "Tailwind CSS", "Aceternity UI", "WhatsApp"],
+    capabilities: ["Motion", "Forms", "Product UI"],
+    preview: "compliance",
+    objective:
+      "Deliver a complete B2B conversion journey from product positioning to qualified WhatsApp contact.",
+    interaction:
+      "Spotlight surfaces, luminous cards, logo marquee, accordion FAQ, responsive navigation, and pre-filled WhatsApp handoff.",
+    role: "Frontend development, SaaS art direction, conversion architecture",
+    proof: "Complete multi-page SaaS funnel with responsive product modules, pricing, social proof, FAQ, and contact flow.",
+    strength: "Conversion-focused SaaS system",
+    outcome:
+      "Shows Gabriel can structure, design, and implement a complete commercial landing page with strong performance fundamentals.",
+    caseStudy: {
+      challenge: "Fit a broad B2B product story into a clear, credible, and conversion-oriented journey.",
+      design: "Combined an editorial grid with lime system signals and restrained Aceternity-inspired light effects.",
+      technical: "Built as server-rendered Next.js routes with isolated client interactions, responsive CSS, metadata, and WhatsApp integration.",
+      proves: "End-to-end landing page execution across brand, product narrative, responsive UI, SEO, and lead conversion.",
+    },
+    complexity: { ui: 5, motion: 3, threeD: 0, backend: 1 },
+  },
+  {
     slug: "/SculptedSilence",
     category: "Fashion / Editorial",
     name: "Sculpted Silence",

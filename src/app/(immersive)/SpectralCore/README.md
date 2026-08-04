@@ -9,7 +9,8 @@
 [![R3F](https://img.shields.io/badge/RENDERER-R3F-d7ff3f?style=for-the-badge)](https://r3f.docs.pmnd.rs)
 
 [**Abrir experiência ↗**](https://landingpages-hub.vercel.app/SpectralCore) ·
-[**Voltar ao Hub**](../../../../../README.md)
+[**Voltar ao Hub ↗**](https://landingpages-hub.vercel.app) ·
+[**README principal**](../../../../README.md)
 
 </div>
 
@@ -102,6 +103,6 @@ o estado visual e não se conecta a hardware ou serviço externo.
 
 <div align="center">
 
-**Spectral Core** · parte do [Landing Page Hub](../../../../../README.md)
+**Spectral Core** · parte do [Landing Page Hub](../../../../README.md)
 
 </div>
