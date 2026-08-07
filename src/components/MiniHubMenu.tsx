@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const LINKS = [
   { href: "/", label: "Hub" },
+  { href: "/Nexa", label: "Nexa" },
   { href: "/Densify", label: "Densify" },
   { href: "/LegisFlow", label: "LegisFlow" },
   { href: "/CinematicInkConcrete", label: "Cinematic Ink" },
@@ -53,7 +54,9 @@ export default function MiniHubMenu({ className }: { className?: string }) {
 
           <nav className="flex flex-col gap-1">
             {LINKS.map((link) => {
-              const active = pathname === link.href;
+              const active =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(`${link.href}/`));
               return (
                 <Link
                   key={link.href}

@@ -1,4 +1,5 @@
 import { Manrope, Newsreader } from "next/font/google";
+import MiniHubMenu from "@/components/MiniHubMenu";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -13,5 +14,10 @@ const newsreader = Newsreader({
 });
 
 export default function NexaLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`nexa-soft ${manrope.variable} ${newsreader.variable}`}>{children}</div>;
+  return (
+    <div className={`nexa-soft ${manrope.variable} ${newsreader.variable}`}>
+      <MiniHubMenu />
+      {children}
+    </div>
+  );
 }

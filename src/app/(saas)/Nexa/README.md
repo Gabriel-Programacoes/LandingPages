@@ -62,7 +62,7 @@ ao Google durante a navegação.
 
 ```text
 src/app/(saas)/Nexa/
-├── layout.tsx                 # Newsreader e Manrope
+├── layout.tsx                 # Fontes e menu global de controle do Hub
 ├── page.tsx                   # Landing e metadata principal
 ├── README.md
 └── contato/
@@ -74,7 +74,8 @@ src/components/nexa/
 
 O catálogo do Hub é atualizado em `src/lib/projects.ts`. Os estilos ficam
 escopados por `.nexa-soft` em `src/app/globals.css` para não alterar as demais
-experiências.
+experiências. O `MiniHubMenu` é montado no layout compartilhado e permanece
+disponível tanto na landing quanto na página de contato.
 
 ## 🗺 Estrutura das páginas
 
