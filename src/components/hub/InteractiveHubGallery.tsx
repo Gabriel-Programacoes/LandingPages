@@ -28,25 +28,12 @@ import {
   SiThreedotjs,
   SiTypescript,
 } from "@icons-pack/react-simple-icons";
-import { CAPABILITY_FILTERS, PROJECTS, Project, ProjectCapability } from "@/lib/projects";
-import { CONTACT_EMAIL, PROFILE } from "@/lib/profile";
+import { CAPABILITY_FILTERS } from "@/lib/projects";
+import { CONTACT_EMAIL } from "@/lib/profile";
 import ProjectLivePreview from "@/components/hub/ProjectLivePreview";
-
-const TOTAL = PROJECTS.length;
-const EMAIL_LINK = PROFILE.links.find((link) => link.kind === "email")?.href ?? "mailto:bielg6055@gmail.com";
-const GMAIL_COMPOSE_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}`;
-const GITHUB_LINK = PROFILE.links.find((link) => link.kind === "github")?.href ?? "https://github.com/Gabriel-Programacoes";
-const LINKEDIN_LINK = PROFILE.links.find((link) => link.kind === "linkedin")?.href ?? "https://www.linkedin.com/in/ghalvess/";
-const HERO_STATS = [
-  ["Projects", String(TOTAL).padStart(2, "0")],
-  ["Focus", "Frontend"],
-  ["Mode", "Remote"],
-] as const;
-const proofSignals = [
-  { label: "Premium UI", Icon: SparkleIcon },
-  { label: "Full-stack flow", Icon: CodeIcon },
-  { label: "Creative tech", Icon: CpuIcon },
-] as const;
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Dictionary, ProjectCapability, ProjectData } from "@/lib/i18n/types";
+import LanguageSelector from "@/components/hub/LanguageSelector";
 
 function StackBrandIcon({ item }: { item: string }) {
   const className = "size-4 text-white/46";
@@ -63,12 +50,18 @@ function StackBrandIcon({ item }: { item: string }) {
   return <CodeIcon aria-hidden className={className} weight="duotone" />;
 }
 
-function ComplexityBars({ project }: { project: Project }) {
+function ComplexityBars({
+  project,
+  labels,
+}: {
+  project: ProjectData;
+  labels: Dictionary["observatory"]["casePanel"]["complexityLabels"];
+}) {
   const entries = [
-    ["UI", project.complexity.ui],
-    ["Motion", project.complexity.motion],
-    ["3D", project.complexity.threeD],
-    ["Back", project.complexity.backend],
+    [labels.ui, project.complexity.ui],
+    [labels.motion, project.complexity.motion],
+    [labels.threeD, project.complexity.threeD],
+    [labels.backend, project.complexity.backend],
   ] as const;
 
   return (
@@ -91,11 +84,19 @@ function ComplexityBars({ project }: { project: Project }) {
   );
 }
 
-function ActiveCasePanel({ project, className = "" }: { project: Project; className?: string }) {
+function ActiveCasePanel({
+  project,
+  t,
+  className = "",
+}: {
+  project: ProjectData;
+  t: Dictionary;
+  className?: string;
+}) {
   const caseNotes = [
-    ["Challenge", project.caseStudy.challenge],
-    ["Design", project.caseStudy.design],
-    ["Technical", project.caseStudy.technical],
+    [t.observatory.casePanel.challenge, project.caseStudy.challenge],
+    [t.observatory.casePanel.design, project.caseStudy.design],
+    [t.observatory.casePanel.technical, project.caseStudy.technical],
   ] as const;
 
   return (
@@ -109,7 +110,7 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-6 flex items-center justify-between">
         <span className="inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-white/28">
           <BriefcaseIcon aria-hidden className="size-4" weight="duotone" />
-          Selected Case
+          {t.observatory.casePanel.selectedCase}
         </span>
         <span
           className="h-2 w-2 rounded-full"
@@ -131,7 +132,7 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-7 border-t border-white/[0.08] pt-5">
         <h3 className="mb-3 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-white/30">
           <UserFocusIcon aria-hidden className="size-4" weight="duotone" />
-          Role
+          {t.observatory.casePanel.role}
         </h3>
         <p className="text-sm leading-7 text-white/46">{project.role}</p>
       </div>
@@ -139,7 +140,7 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-7 border-t border-white/[0.08] pt-5">
         <h3 className="mb-3 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-white/30">
           <LightningIcon aria-hidden className="size-4" weight="duotone" />
-          Strength
+          {t.observatory.casePanel.strength}
         </h3>
         <p className="text-sm font-semibold leading-7" style={{ color: project.accent }}>
           {project.strength}
@@ -150,7 +151,7 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-7 border-t border-white/[0.08] pt-5">
         <h3 className="mb-3 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-white/30">
           <StackIcon aria-hidden className="size-4" weight="duotone" />
-          Stack
+          {t.observatory.casePanel.stack}
         </h3>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
@@ -172,7 +173,7 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-7 border-t border-white/[0.08] pt-5">
         <h3 className="mb-4 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-white/30">
           <CodeIcon aria-hidden className="size-4" weight="duotone" />
-          Case Notes
+          {t.observatory.casePanel.caseNotes}
         </h3>
         <div className="grid gap-3">
           {caseNotes.map(([label, value]) => (
@@ -189,9 +190,9 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
       <div className="mb-7 border-t border-white/[0.08] pt-5">
         <h3 className="mb-4 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-white/30">
           <CpuIcon aria-hidden className="size-4" weight="duotone" />
-          Complexity
+          {t.observatory.casePanel.complexity}
         </h3>
-        <ComplexityBars project={project} />
+        <ComplexityBars project={project} labels={t.observatory.casePanel.complexityLabels} />
       </div>
 
       <Link
@@ -203,14 +204,14 @@ function ActiveCasePanel({ project, className = "" }: { project: Project; classN
           color: "#05070a",
         }}
       >
-        View selected work
+        {t.observatory.casePanel.viewSelectedWork}
         <ArrowRightIcon aria-hidden className="size-3.5" weight="bold" />
       </Link>
     </div>
   );
 }
 
-function FloatingActiveCase({ project }: { project: Project }) {
+function FloatingActiveCase({ project, t }: { project: ProjectData; t: Dictionary }) {
   const trackRef = useRef<HTMLElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
@@ -280,29 +281,56 @@ function FloatingActiveCase({ project }: { project: Project }) {
   return (
     <aside ref={trackRef} className="relative hidden lg:block lg:self-stretch">
       <div ref={panelRef} className="will-change-transform">
-        <ActiveCasePanel project={project} className="max-h-[calc(100svh-2rem)]" />
+        <ActiveCasePanel project={project} t={t} className="max-h-[calc(100svh-2rem)]" />
       </div>
     </aside>
   );
 }
 
 export default function InteractiveHubGallery() {
+  const { t, profile, projects } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<ProjectCapability | "All">("All");
-  const [activeSlug, setActiveSlug] = useState(PROJECTS[0].slug);
+  const [activeSlug, setActiveSlug] = useState(projects[0]?.slug ?? "/Nexa");
   const [emailCopied, setEmailCopied] = useState(false);
+
+  const TOTAL = projects.length;
+  const EMAIL_LINK = profile.links.find((link) => link.kind === "email")?.href ?? `mailto:${CONTACT_EMAIL}`;
+  const GMAIL_COMPOSE_LINK = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}`;
+  const GITHUB_LINK = profile.links.find((link) => link.kind === "github")?.href ?? "https://github.com/Gabriel-Programacoes";
+  const LINKEDIN_LINK = profile.links.find((link) => link.kind === "linkedin")?.href ?? "https://www.linkedin.com/in/ghalvess/";
+
+  const HERO_STATS = useMemo(
+    () =>
+      [
+        [t.hero.stats.projects, String(TOTAL).padStart(2, "0")],
+        [t.hero.stats.focus, t.hero.stats.focusVal],
+        [t.hero.stats.mode, t.hero.stats.modeVal],
+      ] as const,
+    [t, TOTAL]
+  );
+
+  const proofSignals = useMemo(
+    () =>
+      [
+        { label: t.observatory.proofSignals.premiumUi, Icon: SparkleIcon },
+        { label: t.observatory.proofSignals.fullstack, Icon: CodeIcon },
+        { label: t.observatory.proofSignals.creativeTech, Icon: CpuIcon },
+      ] as const,
+    [t]
+  );
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === "All") {
-      return PROJECTS;
+      return projects;
     }
 
-    return PROJECTS.filter((project) =>
+    return projects.filter((project) =>
       (project.capabilities as readonly ProjectCapability[]).includes(activeFilter)
     );
-  }, [activeFilter]);
+  }, [activeFilter, projects]);
 
   const activeProject =
-    PROJECTS.find((project) => project.slug === activeSlug) ?? filteredProjects[0] ?? PROJECTS[0];
+    projects.find((project) => project.slug === activeSlug) ?? filteredProjects[0] ?? projects[0];
 
   const copyEmail = async () => {
     try {
@@ -329,16 +357,17 @@ export default function InteractiveHubGallery() {
             <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
           </div>
           <span className="ml-2 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.25em] text-white/25">
-            {PROFILE.shortName}
+            {profile.shortName}
           </span>
         </div>
-        <div className="flex items-center gap-4 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.16em]">
-          <span className="hidden text-white/20 sm:inline">
-            {TOTAL}&nbsp;selected&nbsp;work{TOTAL !== 1 ? "s" : ""}
+        <div className="flex items-center gap-3 sm:gap-4 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.16em]">
+          <span className="hidden text-white/20 md:inline">
+            {t.common.worksCount(TOTAL)}
           </span>
+          <LanguageSelector />
           <a href="#contact" className="inline-flex items-center gap-1.5 text-white/42 transition hover:text-white">
             <EnvelopeSimpleIcon aria-hidden className="size-3.5" weight="duotone" />
-            Contact
+            {t.common.contact}
           </a>
         </div>
       </header>
@@ -347,16 +376,16 @@ export default function InteractiveHubGallery() {
         <div className="grid min-h-[calc(100svh-5.25rem)] gap-8 lg:grid-cols-[minmax(0,1fr)_420px] xl:grid-cols-[minmax(0,1fr)_480px]">
           <div className="max-w-6xl">
             <p className="mb-6 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/28">
-              {PROFILE.hero.eyebrow}
+              {profile.hero.eyebrow}
             </p>
             <h1 className="max-w-6xl text-[clamp(3.4rem,11vw,9.5rem)] font-black leading-[0.82] tracking-normal text-white">
-              {PROFILE.hero.headline}
+              {profile.hero.headline}
             </h1>
             <p className="mt-7 max-w-3xl text-xl font-semibold leading-8 text-white/72 sm:text-2xl sm:leading-9">
-              {PROFILE.hero.subheadline}
+              {profile.hero.subheadline}
             </p>
             <p className="mt-5 max-w-2xl text-sm leading-7 text-white/44 sm:text-[15px]">
-              {PROFILE.hero.supporting}
+              {profile.hero.supporting}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -364,7 +393,7 @@ export default function InteractiveHubGallery() {
                 href="#selected-work"
                 className="inline-flex items-center gap-2 border border-white bg-white px-5 py-3 font-[family-name:var(--font-geist-mono)] text-[10px] font-bold uppercase tracking-[0.18em] text-[#080c12] transition hover:bg-[#d7ff3f]"
               >
-                {PROFILE.hero.primaryCta}
+                {profile.hero.primaryCta}
                 <ArrowRightIcon aria-hidden className="size-3.5" weight="bold" />
               </a>
               <a
@@ -372,7 +401,7 @@ export default function InteractiveHubGallery() {
                 className="inline-flex items-center gap-2 border border-white/[0.14] bg-white/[0.03] px-5 py-3 font-[family-name:var(--font-geist-mono)] text-[10px] font-bold uppercase tracking-[0.18em] text-white/58 transition hover:border-white/40 hover:text-white"
               >
                 <EnvelopeSimpleIcon aria-hidden className="size-3.5" weight="duotone" />
-                {PROFILE.hero.secondaryCta}
+                {profile.hero.secondaryCta}
               </a>
               <a
                 href={GITHUB_LINK}
@@ -381,7 +410,7 @@ export default function InteractiveHubGallery() {
                 className="inline-flex items-center gap-2 border border-white/[0.1] px-5 py-3 font-[family-name:var(--font-geist-mono)] text-[10px] font-bold uppercase tracking-[0.18em] text-white/36 transition hover:border-white/30 hover:text-white"
               >
                 <SiGithub aria-hidden className="size-3.5" />
-                {PROFILE.hero.tertiaryCta}
+                {profile.hero.tertiaryCta}
               </a>
             </div>
 
@@ -390,15 +419,15 @@ export default function InteractiveHubGallery() {
                 const Icon = index === 0 ? BriefcaseIcon : index === 1 ? MonitorIcon : GlobeHemisphereWestIcon;
 
                 return (
-                <div key={label} className="border-r border-white/[0.08] px-3 py-4 last:border-r-0 sm:px-5">
-                  <div className="flex items-center gap-2">
-                    <Icon aria-hidden className="size-4 text-white/34" weight="duotone" />
-                    <p className="font-[family-name:var(--font-geist-mono)] text-[9px] uppercase tracking-[0.18em] text-white/24">
-                      {label}
-                    </p>
+                  <div key={label} className="border-r border-white/[0.08] px-3 py-4 last:border-r-0 sm:px-5">
+                    <div className="flex items-center gap-2">
+                      <Icon aria-hidden className="size-4 text-white/34" weight="duotone" />
+                      <p className="font-[family-name:var(--font-geist-mono)] text-[9px] uppercase tracking-[0.18em] text-white/24">
+                        {label}
+                      </p>
+                    </div>
+                    <p className="mt-2 text-xl font-black leading-none text-white/78 sm:text-2xl">{value}</p>
                   </div>
-                  <p className="mt-2 text-xl font-black leading-none text-white/78 sm:text-2xl">{value}</p>
-                </div>
                 );
               })}
             </div>
@@ -409,15 +438,15 @@ export default function InteractiveHubGallery() {
               <div className="flex items-center gap-2">
                 <UserFocusIcon aria-hidden className="size-4 text-white/34" weight="duotone" />
                 <p className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.24em] text-white/24">
-                  Profile Signal
+                  {t.profileSignal.label}
                 </p>
               </div>
-              <p className="mt-4 text-2xl font-black leading-none text-white">{PROFILE.title}</p>
-              <p className="mt-4 text-sm leading-7 text-white/46">{PROFILE.positioning}</p>
+              <p className="mt-4 text-2xl font-black leading-none text-white">{profile.title}</p>
+              <p className="mt-4 text-sm leading-7 text-white/46">{profile.positioning}</p>
             </div>
 
             <div className="grid grid-cols-3 border-b border-white/[0.08]">
-              {PROFILE.availability.map((item) => (
+              {profile.availability.map((item) => (
                 <div key={item} className="border-r border-white/[0.08] p-4 last:border-r-0">
                   <RocketLaunchIcon aria-hidden className="mb-2 size-4 text-white/34" weight="duotone" />
                   <p className="mt-2 text-sm font-semibold leading-5 text-white/62">{item}</p>
@@ -430,11 +459,11 @@ export default function InteractiveHubGallery() {
                 <div className="mb-4 flex items-center gap-2">
                   <StackIcon aria-hidden className="size-4 text-white/34" weight="duotone" />
                   <p className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.24em] text-white/24">
-                    Core Stack
+                    {t.profileSignal.coreStack}
                   </p>
                 </div>
                 <div className="grid gap-3">
-                  {PROFILE.stack.slice(0, 4).map((group) => (
+                  {profile.stack.slice(0, 4).map((group) => (
                     <div key={group.label} className="grid grid-cols-[96px_minmax(0,1fr)] gap-3 border-b border-white/[0.06] pb-3 last:border-b-0">
                       <span className="font-[family-name:var(--font-geist-mono)] text-[9px] uppercase tracking-[0.14em] text-white/24">
                         {group.label}
@@ -449,11 +478,11 @@ export default function InteractiveHubGallery() {
                 <div className="mb-4 flex items-center gap-2">
                   <SparkleIcon aria-hidden className="size-4 text-white/34" weight="duotone" />
                   <p className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.24em] text-white/24">
-                    Priority Work
+                    {t.profileSignal.priorityWork}
                   </p>
                 </div>
                 <div className="grid gap-2">
-                  {PROJECTS.slice(0, 3).map((project, index) => (
+                  {projects.slice(0, 3).map((project, index) => (
                     <Link
                       key={project.slug}
                       href={project.slug}
@@ -485,17 +514,17 @@ export default function InteractiveHubGallery() {
         <div className="min-w-0">
           <div className="mb-8 grid gap-6 border-y border-white/[0.08] py-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
             <div className="max-w-4xl">
-            <p className="mb-5 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/24">
-              Selected Work Observatory
-            </p>
-            <h2 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-normal sm:text-[76px] lg:text-[92px]">
-              Selected
-              <br />
-              <span className="text-white/20">Work</span>
-            </h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-white/42 sm:text-[15px]">
-              A focused selection of frontend, full-stack, product UI, and creative technology work built to show visual range, business judgment, and production execution.
-            </p>
+              <p className="mb-5 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/24">
+                {t.observatory.eyebrow}
+              </p>
+              <h2 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-normal sm:text-[76px] lg:text-[92px]">
+                {t.observatory.titleFirst}
+                <br />
+                <span className="text-white/20">{t.observatory.titleSecond}</span>
+              </h2>
+              <p className="mt-6 max-w-xl text-sm leading-7 text-white/42 sm:text-[15px]">
+                {t.observatory.description}
+              </p>
             </div>
             <div className="grid grid-cols-3 gap-2 lg:grid-cols-1">
               {proofSignals.map(({ label, Icon }) => (
@@ -510,6 +539,7 @@ export default function InteractiveHubGallery() {
           <div className="mb-6 flex flex-wrap gap-2">
             {(["All", ...CAPABILITY_FILTERS] as const).map((filter) => {
               const active = activeFilter === filter;
+              const label = filter === "All" ? t.observatory.allFilter : t.observatory.capabilityLabels[filter];
 
               return (
                 <button
@@ -524,14 +554,14 @@ export default function InteractiveHubGallery() {
                     boxShadow: active ? `0 0 24px ${activeProject.accentGlow}` : "none",
                   }}
                 >
-                  {filter}
+                  {label}
                 </button>
               );
             })}
           </div>
 
           <div className="sticky top-3 z-30 mb-6 max-h-[calc(100svh-1.5rem)] lg:hidden">
-            <ActiveCasePanel project={activeProject} className="max-h-[calc(100svh-1.5rem)]" />
+            <ActiveCasePanel project={activeProject} t={t} className="max-h-[calc(100svh-1.5rem)]" />
           </div>
 
           <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
@@ -591,7 +621,7 @@ export default function InteractiveHubGallery() {
                         <div>
                           <p className="mb-1 font-[family-name:var(--font-geist-mono)] text-[9px] uppercase tracking-[0.18em] text-white/22">
                             <LightningIcon aria-hidden className="mr-1 inline size-3" weight="duotone" />
-                            Strength
+                            {t.observatory.card.strength}
                           </p>
                           <p className="text-sm font-semibold leading-5" style={{ color: project.accent }}>
                             {project.strength}
@@ -600,7 +630,7 @@ export default function InteractiveHubGallery() {
                         <div>
                           <p className="mb-1 font-[family-name:var(--font-geist-mono)] text-[9px] uppercase tracking-[0.18em] text-white/22">
                             <UserFocusIcon aria-hidden className="mr-1 inline size-3" weight="duotone" />
-                            Role
+                            {t.observatory.card.role}
                           </p>
                           <p className="text-xs leading-5 text-white/42">{project.role}</p>
                         </div>
@@ -624,7 +654,7 @@ export default function InteractiveHubGallery() {
                           className="flex items-center gap-1.5 text-[13px] font-semibold transition-all duration-200 group-hover:gap-3"
                           style={{ color: project.accent }}
                         >
-                          View work
+                          {t.observatory.card.viewWork}
                           <ArrowRightIcon aria-hidden className="size-3.5" weight="bold" />
                         </span>
                       </div>
@@ -653,7 +683,7 @@ export default function InteractiveHubGallery() {
           </div>
         </div>
 
-        <FloatingActiveCase project={activeProject} />
+        <FloatingActiveCase project={activeProject} t={t} />
       </section>
 
       <section
@@ -663,23 +693,23 @@ export default function InteractiveHubGallery() {
         <div className="grid gap-10 lg:grid-cols-[minmax(320px,0.8fr)_minmax(0,1.2fr)] lg:gap-10">
           <div className="grid content-between gap-8 border border-white/[0.08] bg-white/[0.02] p-5">
             <div>
-            <p className="mb-5 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/24">
-              About / Stack
-            </p>
-            <h2 className="max-w-3xl text-4xl font-black leading-[0.92] tracking-normal text-white sm:text-6xl lg:text-7xl">
-              Interface craft,
-              <br />
-              <span className="text-white/20">systems logic.</span>
-            </h2>
+              <p className="mb-5 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/24">
+                {t.about.eyebrow}
+              </p>
+              <h2 className="max-w-3xl text-4xl font-black leading-[0.92] tracking-normal text-white sm:text-6xl lg:text-7xl">
+                {t.about.titleFirst}
+                <br />
+                <span className="text-white/20">{t.about.titleSecond}</span>
+              </h2>
             </div>
 
             <div className="grid gap-3">
               <div className="border-t border-white/[0.08] pt-4">
                 <p className="inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.2em] text-white/24">
                   <MapPinIcon aria-hidden className="size-4" weight="duotone" />
-                  Based in
+                  {t.about.basedIn}
                 </p>
-                <p className="mt-2 text-lg font-black text-white/76">{PROFILE.location}</p>
+                <p className="mt-2 text-lg font-black text-white/76">{profile.location}</p>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <a
@@ -707,15 +737,15 @@ export default function InteractiveHubGallery() {
           <div className="grid gap-8">
             <div className="border-y border-white/[0.08] py-6">
               <p className="max-w-4xl text-xl font-semibold leading-9 text-white/74 sm:text-2xl sm:leading-10">
-                {PROFILE.about}
+                {profile.about}
               </p>
               <p className="mt-5 max-w-3xl text-sm leading-7 text-white/42 sm:text-[15px]">
-                {PROFILE.bio}
+                {profile.bio}
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {PROFILE.specialties.map((specialty, index) => (
+              {profile.specialties.map((specialty, index) => (
                 <div
                   key={specialty}
                   className="flex min-h-20 items-end justify-between border border-white/[0.07] bg-white/[0.02] p-4"
@@ -732,7 +762,7 @@ export default function InteractiveHubGallery() {
             </div>
 
             <div className="grid gap-0 border-t border-white/[0.08]">
-              {PROFILE.stack.map((group) => (
+              {profile.stack.map((group) => (
                 <div
                   key={group.label}
                   className="grid gap-3 border-b border-white/[0.08] py-5 sm:grid-cols-[160px_minmax(0,1fr)] sm:items-start"
@@ -766,15 +796,15 @@ export default function InteractiveHubGallery() {
           <div>
             <p className="mb-5 inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.35em] text-white/24">
               <EnvelopeSimpleIcon aria-hidden className="size-4" weight="duotone" />
-              Contact
+              {t.contact.eyebrow}
             </p>
             <h2 className="max-w-4xl text-4xl font-black leading-[0.92] tracking-normal text-white sm:text-6xl lg:text-7xl">
-              Available for
+              {t.contact.titleFirst}
               <br />
-              <span className="text-white/20">frontend work.</span>
+              <span className="text-white/20">{t.contact.titleSecond}</span>
             </h2>
             <p className="mt-6 max-w-2xl text-sm leading-7 text-white/44 sm:text-[15px]">
-              Freelance projects, frontend roles, premium landing pages, product interfaces, and full-stack workflows.
+              {t.contact.description}
             </p>
           </div>
 
@@ -785,7 +815,7 @@ export default function InteractiveHubGallery() {
             >
               <span className="inline-flex items-center gap-2">
                 <EnvelopeSimpleIcon aria-hidden className="size-4" weight="bold" />
-                Email
+                {t.contact.emailLabel}
               </span>
               <span className="hidden text-[9px] tracking-[0.1em] sm:inline">{CONTACT_EMAIL}</span>
             </a>
@@ -798,7 +828,7 @@ export default function InteractiveHubGallery() {
             >
               <span className="inline-flex items-center gap-2">
                 <GlobeHemisphereWestIcon aria-hidden className="size-4" weight="duotone" />
-                Gmail compose
+                {t.contact.gmailCompose}
               </span>
               <ArrowRightIcon aria-hidden className="size-3.5" weight="bold" />
             </a>
@@ -810,7 +840,7 @@ export default function InteractiveHubGallery() {
             >
               <span className="inline-flex items-center gap-2">
                 <CodeIcon aria-hidden className="size-4" weight="duotone" />
-                {emailCopied ? "Copied" : "Copy email"}
+                {emailCopied ? t.contact.copied : t.contact.copyEmail}
               </span>
               <span className="hidden text-[9px] tracking-[0.1em] sm:inline">{CONTACT_EMAIL}</span>
             </button>
@@ -850,7 +880,7 @@ export default function InteractiveHubGallery() {
           LandingPagesHub · {new Date().getFullYear()}
         </span>
         <span className="hidden font-[family-name:var(--font-geist-mono)] text-[11px] text-white/12 sm:inline">
-          Next.js · Tailwind CSS · Framer Motion · WebGL-ready metadata
+          {t.footer.builtWith}
         </span>
       </footer>
     </main>

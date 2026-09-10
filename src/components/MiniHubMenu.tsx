@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageSelector from "@/components/hub/LanguageSelector";
 
 const LINKS = [
   { href: "/", label: "Hub" },
@@ -18,6 +20,7 @@ const LINKS = [
 export default function MiniHubMenu({ className }: { className?: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <div className={`fixed left-3 top-1/2 -translate-y-1/2 z-[120] ${className ?? ""}`}>
@@ -29,7 +32,7 @@ export default function MiniHubMenu({ className }: { className?: string }) {
       </button>
 
       <div
-        className={`absolute left-0 top-1/2 -translate-y-1/2 w-[168px] rounded-2xl border border-white/[0.10] bg-[#080c12]/88 backdrop-blur-xl transition-all duration-200 ${
+        className={`absolute left-0 top-1/2 -translate-y-1/2 w-[172px] rounded-2xl border border-white/[0.10] bg-[#080c12]/88 backdrop-blur-xl transition-all duration-200 ${
           open ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 -translate-x-3 pointer-events-none"
         }`}
       >
@@ -44,7 +47,7 @@ export default function MiniHubMenu({ className }: { className?: string }) {
               onClick={() => setOpen(false)}
               className="h-7 px-2 rounded-lg border border-white/10 text-white/60 hover:text-white hover:bg-white/8 text-[10px] uppercase tracking-[0.18em] font-[family-name:var(--font-geist-mono)]"
             >
-              Close
+              {t.common.close}
             </button>
           </div>
 
@@ -73,6 +76,10 @@ export default function MiniHubMenu({ className }: { className?: string }) {
               );
             })}
           </nav>
+
+          <div className="mt-2 pt-2 border-t border-white/[0.08]">
+            <LanguageSelector variant="compact" />
+          </div>
         </div>
       </div>
     </div>

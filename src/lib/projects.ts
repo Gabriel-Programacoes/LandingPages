@@ -1,56 +1,8 @@
-export type ProjectCapability =
-  | "3D"
-  | "Motion"
-  | "Forms"
-  | "Server Actions"
-  | "Editorial"
-  | "WebGL"
-  | "Glass UI"
-  | "Compliance"
-  | "Product UI";
+import { ProjectCapability, ProjectPreview, ProjectData } from "./i18n/types";
+export { getLocalizedProjects } from "./i18n/translations";
 
-export type ProjectPreview =
-  | "atelier"
-  | "blueprint"
-  | "books"
-  | "glass"
-  | "compliance"
-  | "spectral";
-
-export type Project = {
-  slug: string;
-  category: string;
-  name: string;
-  description: string;
-  accent: string;
-  accentDim: string;
-  accentBorder: string;
-  accentGlow: string;
-  tag: string;
-  dot: string;
-  extras: { label: string; href: string }[];
-  technologies: string[];
-  capabilities: ProjectCapability[];
-  preview: ProjectPreview;
-  objective: string;
-  interaction: string;
-  role: string;
-  proof: string;
-  strength: string;
-  outcome: string;
-  caseStudy: {
-    challenge: string;
-    design: string;
-    technical: string;
-    proves: string;
-  };
-  complexity: {
-    ui: number;
-    motion: number;
-    threeD: number;
-    backend: number;
-  };
-};
+export type { ProjectCapability, ProjectPreview };
+export type Project = ProjectData;
 
 export const PROJECTS = [
   {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Landing Pages HUB",
-  description: "A collection of landing pages built as part of the Quinquilharias project.",
+  title: "Gabriel Henrique — Landing Page Hub / Portfolio",
+  description:
+    "Full-Stack Developer portfolio showcasing premium frontend experiences, scalable web apps, and workflow automation.",
 };
 
 export default function RootLayout({
@@ -27,9 +29,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col relative">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 z-[9999] opacity-[0.035]"
