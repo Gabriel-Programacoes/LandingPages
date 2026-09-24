@@ -46,6 +46,7 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 - ✦ **Previews vivos** — cada card possui uma representação visual própria;
 - 📖 **Estudos de caso** — desafio, design, solução técnica e resultado;
 - 📊 **Matriz de complexidade** — leitura comparativa de UI, motion, 3D e backend;
+- 🌐 **Interface trilíngue** — Hub integralmente localizado em inglês, português brasileiro e espanhol;
 - 📈 **Analytics** — integração global com Vercel Analytics.
 
 ---
@@ -179,6 +180,7 @@ landing-page-hub/
 │   │   ├── hub/                       # Galeria e previews
 │   │   └── <projeto>/                 # Componentes isolados
 │   └── lib/
+│       ├── i18n/                       # Dicionários EN, PT-BR e ES
 │       ├── projects.ts                # Fonte de dados do Hub
 │       └── profile.ts                 # Perfil e contato
 ├── next.config.ts

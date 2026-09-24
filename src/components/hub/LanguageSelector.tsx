@@ -14,6 +14,7 @@ type LanguageSelectorProps = {
 const OPTIONS: { locale: Locale; label: string; fullLabel: string }[] = [
   { locale: "en", label: "EN", fullLabel: "English" },
   { locale: "pt-BR", label: "PT-BR", fullLabel: "Português (Brasil)" },
+  { locale: "es", label: "ES", fullLabel: "Español" },
 ];
 
 export default function LanguageSelector({
@@ -21,14 +22,14 @@ export default function LanguageSelector({
   variant = "header",
   showIcon = true,
 }: LanguageSelectorProps) {
-  const { locale, setLocale } = useLanguage();
+  const { locale, setLocale, t } = useLanguage();
 
   if (variant === "compact") {
     return (
       <div
         className={`flex items-center gap-1 rounded-xl border border-white/[0.08] bg-white/[0.03] p-1 ${className}`}
         role="group"
-        aria-label="Selecionar idioma / Select language"
+        aria-label={t.common.language}
       >
         {OPTIONS.map((opt) => {
           const isActive = locale === opt.locale;
@@ -62,7 +63,7 @@ export default function LanguageSelector({
     <div
       className={`inline-flex items-center rounded-lg border border-white/[0.10] bg-black/40 p-0.5 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.4)] ${className}`}
       role="group"
-      aria-label="Selecionar idioma / Select language"
+      aria-label={t.common.language}
     >
       {showIcon && (
         <span className="pl-2 pr-1 text-white/30" aria-hidden>

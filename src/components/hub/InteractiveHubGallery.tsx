@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import {
   ArrowRightIcon,
   BriefcaseIcon,
@@ -93,20 +100,88 @@ function ActiveCasePanel({
   t: Dictionary;
   className?: string;
 }) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const thumbRef = useRef<HTMLDivElement | null>(null);
+  const dragRef = useRef({ pointerY: 0, scrollTop: 0 });
   const caseNotes = [
     [t.observatory.casePanel.challenge, project.caseStudy.challenge],
     [t.observatory.casePanel.design, project.caseStudy.design],
     [t.observatory.casePanel.technical, project.caseStudy.technical],
   ] as const;
 
+  useEffect(() => {
+    const scrollArea = scrollRef.current;
+    const thumb = thumbRef.current;
+    if (!scrollArea || !thumb) return;
+
+    const sync = () => {
+      const { clientHeight, scrollHeight, scrollTop } = scrollArea;
+      const scrollable = scrollHeight > clientHeight + 1;
+      const thumbHeight = scrollable
+        ? Math.max(56, Math.round((clientHeight / scrollHeight) * clientHeight))
+        : clientHeight;
+      const travel = Math.max(0, clientHeight - thumbHeight);
+      const scrollRange = Math.max(1, scrollHeight - clientHeight);
+
+      thumb.style.height = `${thumbHeight}px`;
+      thumb.style.transform = `translateY(${Math.round((scrollTop / scrollRange) * travel)}px)`;
+      thumb.style.opacity = scrollable ? "1" : "0";
+    };
+
+    sync();
+    scrollArea.addEventListener("scroll", sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(scrollArea);
+    if (scrollArea.firstElementChild) observer.observe(scrollArea.firstElementChild);
+
+    return () => {
+      scrollArea.removeEventListener("scroll", sync);
+      observer.disconnect();
+    };
+  }, [project.slug]);
+
+  const dragThumb = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const scrollArea = scrollRef.current;
+    const thumb = thumbRef.current;
+    if (!scrollArea || !thumb || !event.currentTarget.hasPointerCapture(event.pointerId)) return;
+
+    const travel = scrollArea.clientHeight - thumb.offsetHeight;
+    const scrollRange = scrollArea.scrollHeight - scrollArea.clientHeight;
+    if (travel <= 0 || scrollRange <= 0) return;
+    scrollArea.scrollTop = dragRef.current.scrollTop +
+      (event.clientY - dragRef.current.pointerY) * (scrollRange / travel);
+  };
+
+  const jumpToTrackPosition = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
+    const scrollArea = scrollRef.current;
+    const thumb = thumbRef.current;
+    if (!scrollArea || !thumb) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const travel = scrollArea.clientHeight - thumb.offsetHeight;
+    const ratio = Math.min(1, Math.max(0, (event.clientY - rect.top - thumb.offsetHeight / 2) / travel));
+    scrollArea.scrollTo({
+      top: ratio * (scrollArea.scrollHeight - scrollArea.clientHeight),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div
-      className={`overflow-y-auto border bg-black/35 p-5 backdrop-blur-xl ${className}`}
+      className={`relative ${className}`}
       style={{
-        borderColor: project.accentBorder,
-        boxShadow: `0 28px 90px ${project.accentGlow}`,
-      }}
+        "--case-scrollbar-accent": project.accent,
+      } as CSSProperties}
     >
+      <div
+        ref={scrollRef}
+        className="hub-case-scrollbar max-h-[inherit] overflow-y-auto border bg-black/35 p-5 pr-7 backdrop-blur-xl"
+        style={{
+          borderColor: project.accentBorder,
+          boxShadow: `0 28px 90px ${project.accentGlow}`,
+        }}
+      >
       <div className="mb-6 flex items-center justify-between">
         <span className="inline-flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-white/28">
           <BriefcaseIcon aria-hidden className="size-4" weight="duotone" />
@@ -207,6 +282,26 @@ function ActiveCasePanel({
         {t.observatory.casePanel.viewSelectedWork}
         <ArrowRightIcon aria-hidden className="size-3.5" weight="bold" />
       </Link>
+      </div>
+
+      <div
+        aria-hidden
+        className="hub-case-scroll-track"
+        onPointerDown={jumpToTrackPosition}
+      >
+        <div
+          ref={thumbRef}
+          className="hub-case-scroll-thumb"
+          onPointerDown={(event) => {
+            dragRef.current = {
+              pointerY: event.clientY,
+              scrollTop: scrollRef.current?.scrollTop ?? 0,
+            };
+            event.currentTarget.setPointerCapture(event.pointerId);
+          }}
+          onPointerMove={dragThumb}
+        />
+      </div>
     </div>
   );
 }
@@ -558,10 +653,6 @@ export default function InteractiveHubGallery() {
                 </button>
               );
             })}
-          </div>
-
-          <div className="sticky top-3 z-30 mb-6 max-h-[calc(100svh-1.5rem)] lg:hidden">
-            <ActiveCasePanel project={activeProject} t={t} className="max-h-[calc(100svh-1.5rem)]" />
           </div>
 
           <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">

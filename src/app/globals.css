@@ -379,3 +379,48 @@ body {
   position: relative;
   z-index: 2;
 }
+
+/* Selected case: deterministic brutalist scrollbar */
+.hub-case-scrollbar {
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+
+.hub-case-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.hub-case-scroll-track {
+  position: absolute;
+  inset-block: 1px;
+  right: 1px;
+  z-index: 10;
+  width: 8px;
+  cursor: pointer;
+  touch-action: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0 3px,
+    rgba(255, 255, 255, 0.08) 3px 5px,
+    transparent 5px
+  );
+}
+
+.hub-case-scroll-thumb {
+  position: absolute;
+  inset: 0 auto auto 2px;
+  width: 4px;
+  min-height: 56px;
+  border-radius: 0;
+  cursor: ns-resize;
+  touch-action: none;
+  background: var(--case-scrollbar-accent);
+  transition: width 120ms linear, left 120ms linear;
+}
+
+.hub-case-scroll-thumb:hover,
+.hub-case-scroll-thumb:active {
+  left: 1px;
+  width: 6px;
+}
