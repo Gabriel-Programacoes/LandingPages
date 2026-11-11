@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "project": "Valmont Barber Club",
+  "archetype": "Tactile Modular Deck / editorial barber catalogue",
+  "updatedAt": "2026-11-10",
+  "fonts": ["Cinzel", "Plus Jakarta Sans"],
+  "tokens": {},
+  "themeContract": {
+    "source": "valmont.css",
+    "default": "light",
+    "note": "O verificador não distingue seletores de tema; os tokens por tema estão definidos no CSS e na REBUILD_SPEC.md.",
+    "light": {
+      "--paper": "oklch(96% .012 80)",
+      "--surface": "oklch(99% .005 80)",
+      "--ink": "oklch(22% .024 62)",
+      "--muted": "oklch(45% .018 65)",
+      "--line": "oklch(79% .015 75)",
+      "--wine": "oklch(35% .105 26)",
+      "--brass": "oklch(62% .095 78)",
+      "--on-wine": "oklch(98% .005 80)"
+    },
+    "dark": {
+      "--paper": "oklch(17% .018 62)",
+      "--surface": "oklch(22% .021 62)",
+      "--ink": "oklch(94% .009 80)",
+      "--muted": "oklch(72% .013 75)",
+      "--line": "oklch(38% .019 65)",
+      "--wine": "oklch(67% .105 30)",
+      "--brass": "oklch(75% .085 78)",
+      "--on-wine": "oklch(16% .018 62)"
+    }
+  },
+  "components": []
+}

@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import LanguageSelector from "@/components/hub/LanguageSelector";
 
 const LINKS = [
   { href: "/", label: "Hub" },
+  { href: "/LexDossier", label: "LexDossier" },
+  { href: "/Valmont", label: "Valmont Barber" },
   { href: "/Nexa", label: "Nexa" },
   { href: "/Densify", label: "Densify" },
   { href: "/LegisFlow", label: "LegisFlow" },
@@ -15,6 +17,7 @@ const LINKS = [
   { href: "/DraftedObsidian", label: "Drafted Obsidian" },
   { href: "/SculptedSilence", label: "Sculpted Silence" },
   { href: "/SpectralCore", label: "Spectral Core" },
+  { href: "/AvantGarde", label: "Avant-Garde" },
 ];
 
 export default function MiniHubMenu({ className }: { className?: string }) {
@@ -22,17 +25,39 @@ export default function MiniHubMenu({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <div className={`fixed left-3 top-1/2 -translate-y-1/2 z-[120] ${className ?? ""}`}>
+      {open && (
+        <div
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-[-1] bg-black/20 backdrop-blur-[2px]"
+        />
+      )}
+
       <button
+        type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`h-24 w-8 rounded-xl border border-white/[0.12] bg-[#080c12]/86 backdrop-blur-xl text-white/65 hover:text-white transition-colors font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.22em] [writing-mode:vertical-rl] ${open ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        aria-label="Menu Landing Page Hub"
+        aria-expanded={open}
+        className={`h-24 w-8 rounded-xl border border-white/[0.12] bg-[#080c12]/86 backdrop-blur-xl text-white/65 hover:text-white transition-colors font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.22em] [writing-mode:vertical-rl] ${
+          open ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
       >
         HUB
       </button>
 
       <div
-        className={`absolute left-0 top-1/2 -translate-y-1/2 w-[172px] rounded-2xl border border-white/[0.10] bg-[#080c12]/88 backdrop-blur-xl transition-all duration-200 ${
+        className={`absolute left-0 top-1/2 -translate-y-1/2 w-[172px] max-h-[calc(100vh-2rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/[0.10] bg-[#080c12]/88 backdrop-blur-xl transition-all duration-200 ${
           open ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 -translate-x-3 pointer-events-none"
         }`}
       >
@@ -44,6 +69,7 @@ export default function MiniHubMenu({ className }: { className?: string }) {
               <span className="w-2 h-2 rounded-full bg-[#28c840]" />
             </div>
             <button
+              type="button"
               onClick={() => setOpen(false)}
               className="h-7 px-2 rounded-lg border border-white/10 text-white/60 hover:text-white hover:bg-white/8 text-[10px] uppercase tracking-[0.18em] font-[family-name:var(--font-geist-mono)]"
             >

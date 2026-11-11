@@ -753,6 +753,131 @@ export const LOCALIZED_PROJECTS: Record<Locale, ProjectData[]> = {
       },
       complexity: { ui: 5, motion: 3, threeD: 0, backend: 0 },
     },
+    {
+      slug: "/AvantGarde",
+      category: "Avant-Garde / Creative",
+      name: "Avant-Garde Architecture",
+      description:
+        "A brutalist digital machine featuring collision typography, Lenis inertia physics, elastic difference cursor, and procedural WebGL noise distortion.",
+      accent: "#ff4a1c",
+      accentDim: "rgba(255,74,28,0.08)",
+      accentBorder: "rgba(255,74,28,0.28)",
+      accentGlow: "rgba(255,74,28,0.22)",
+      tag: "AVANT-GARDE",
+      dot: "#ff4a1c",
+      extras: [],
+      technologies: ["Next.js", "React Three Fiber", "GSAP ScrollTrigger", "Lenis", "Tailwind CSS"],
+      capabilities: ["3D", "WebGL", "Motion", "Editorial"],
+      preview: "spectral",
+      objective:
+        "Obliterate standard UI kits through uncompromised typography, visceral physical inertia, and WebGL computational art.",
+      interaction:
+        "Kinetic word unroll, elastic velocity cursor with difference blending, and chaotic-to-monolithic GSAP scroll lockup.",
+      role: "Creative development, digital art direction, GLSL shader architecture",
+      proof: "Award-level brutalist landing page combining heavy kinetic physics and real-time GPU procedural vertex displacement.",
+      strength: "Avant-garde creative engineering",
+      outcome:
+        "Demonstrates high-level mastery of WebGL shaders, advanced GSAP choreography, smooth scroll inertia, and refined brutalism.",
+      caseStudy: {
+        challenge:
+          "Break entirely free from conventional rounded card UI templates while preserving sub-millimeter precision and high performance.",
+        design:
+          "Collided classical Didone serif with industrial condensed grotesque over an asymmetric exposed cartesian framework in charred charcoal and raw bone.",
+        technical:
+          "Built with React 19, custom GLSL 3D simplex noise displacement in React Three Fiber, synchronized Lenis RAF ticker, and GSAP timeline pinning.",
+        proves:
+          "Capacity to architect high-concept creative engineering experiences with zero reliance on standard UI kits.",
+      },
+      complexity: { ui: 5, motion: 5, threeD: 4, backend: 0 },
+    },
+    {
+      slug: "/Valmont",
+      category: "Luxury Grooming / Confraria",
+      name: "Valmont Barber Club",
+      description:
+        "A high-conversion avant-garde barbershop and membership club with dual-theme (dark/light), interactive savings calculator, and 3-step booking engine.",
+      accent: "#c8963e",
+      accentDim: "rgba(200,150,62,0.08)",
+      accentBorder: "rgba(200,150,62,0.28)",
+      accentGlow: "rgba(200,150,62,0.22)",
+      tag: "BARBER",
+      dot: "#c8963e",
+      extras: [{ label: "Agendamento", href: "/Valmont#agendamento" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "SEO Schema",
+        "LocalStorage",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Motion"],
+      preview: "atelier",
+      objective:
+        "Drive dual high-conversion funnels for new first-time clients and recurring monthly club subscriptions.",
+      interaction:
+        "Real-time dark/light theme switch, interactive membership savings simulator, 3-step booking flow with custom WhatsApp handoff, and live availability badge.",
+      role: "Avant-garde frontend engineering, conversion funnel architecture, design system",
+      proof:
+        "Full bespoke luxury barbershop landing page with complete SEO metadata, LocalBusiness schema, and accessible dual-theme.",
+      strength: "High-conversion luxury e-commerce & subscription architecture",
+      outcome:
+        "Proves ability to fuse avant-garde aesthetics with commercial conversion psychology and recurring revenue mechanics.",
+      caseStudy: {
+        challenge:
+          "Elevate a traditional barbershop into a modern private membership club while maximizing first-visit and recurring subscriptions.",
+        design:
+          "Paired chiselled Roman display typography with warm amber gold, deep obsidian charcoal, hot towel rituals, and bespoke chapter layout.",
+        technical:
+          "Built with React 19, Phosphor Icons, dual CSS variable themes, responsive interactive booking flow, and SEO structured data.",
+        proves:
+          "End-to-end craftsmanship in conversion UX, responsive motion, localized copy, and brand positioning.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
+    },
+    {
+      slug: "/LexDossier",
+      category: "LegalTech / Paralegal Operations",
+      name: "Helena Prado • LexDossier",
+      description:
+        "A high-stakes paralegal portfolio and retainer landing page with live on-demand diligence simulator, confidential unmasking interactions, and Awwwards-level mobile responsiveness.",
+      accent: "#38bdf8",
+      accentDim: "rgba(56,189,248,0.08)",
+      accentBorder: "rgba(56,189,248,0.28)",
+      accentGlow: "rgba(56,189,248,0.22)",
+      tag: "PARALEGAL",
+      dot: "#38bdf8",
+      extras: [{ label: "Simulador", href: "/LexDossier#simulador" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "Framer Motion",
+        "SEO Schema",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Compliance", "Motion"],
+      preview: "compliance",
+      objective:
+        "Convert attorneys and legal directors into on-demand diligence clients and recurring monthly B2B retainers.",
+      interaction:
+        "Live interactive diligence utility above the fold, redacted classification unmasking, segmented dual theme switch, and mobile bottom conversion bar.",
+      role: "Avant-garde frontend engineering, legal operations narrative, high-conversion architecture",
+      proof:
+        "Full forensic dossier portfolio with verified case studies, dual theme, JSON-LD LegalService schema, and 100% mobile touch optimization.",
+      strength: "B2B legal operations conversion & avant-garde editorial UX",
+      outcome:
+        "Demonstrates capacity to transform bureaucratic friction into a high-speed digital command center worthy of design awards.",
+      caseStudy: {
+        challenge:
+          "Present paralegal and corporate filing services with executive prestige while capturing both urgent one-off tasks and recurring monthly retainers.",
+        design:
+          "Deconstructed forensic dossier aesthetic with redacted confidential bars, optical serif Fraunces, and archival ink/cobalt tones.",
+        technical:
+          "Engineered with React 19, Framer Motion layout springs, real-time retainer calculator vs CLT costs, and fluid mobile ergonomics.",
+        proves:
+          "High-craft execution of niche professional services with complex conversion funnels and mobile perfection.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
+    },
   ],
   "pt-BR": [
     {
@@ -1012,6 +1137,131 @@ export const LOCALIZED_PROJECTS: Record<Locale, ProjectData[]> = {
           "Competência técnica em UI de produto, controles responsivos, estados de interação e acabamento visual de alto padrão.",
       },
       complexity: { ui: 5, motion: 3, threeD: 0, backend: 0 },
+    },
+    {
+      slug: "/AvantGarde",
+      category: "Avant-Garde / Engenharia Criativa",
+      name: "Avant-Garde Architecture",
+      description:
+        "Máquina digital brutalista combinando tipografia de colisão, física inercial Lenis, cursor elástico com blend difference e distorção procedural WebGL.",
+      accent: "#ff4a1c",
+      accentDim: "rgba(255,74,28,0.08)",
+      accentBorder: "rgba(255,74,28,0.28)",
+      accentGlow: "rgba(255,74,28,0.22)",
+      tag: "AVANT-GARDE",
+      dot: "#ff4a1c",
+      extras: [],
+      technologies: ["Next.js", "React Three Fiber", "GSAP ScrollTrigger", "Lenis", "Tailwind CSS"],
+      capabilities: ["3D", "WebGL", "Motion", "Editorial"],
+      preview: "spectral",
+      objective:
+        "Romper totalmente com UI kits convencionais através de tipografia intransigente, inércia física visceral e arte computacional em WebGL.",
+      interaction:
+        "Revelação cinética palavra por palavra, cursor vetorial elástico com inversão cromática e travamento de layout caótico para monolítico via GSAP ScrollTrigger.",
+      role: "Desenvolvimento criativo, direção de arte digital, arquitetura de shaders GLSL",
+      proof: "Landing page brutalista de alto impacto combinando física cinética pesada e deslocamento procedural de vértices na GPU.",
+      strength: "Engenharia criativa avant-garde",
+      outcome:
+        "Evidencia domínio pleno de shaders WebGL, coreografia avançada com GSAP, scroll inercial e brutalismo refinado.",
+      caseStudy: {
+        challenge:
+          "Superar a mesmice estética de templates e cartões arredondados mantendo máxima precisão matemática e alta performance.",
+        design:
+          "Colisão de serifa Didone clássica com grotesca industrial condensada sob grade assimétrica exposta em carvão mineral e papel osso.",
+        technical:
+          "Implementado em React 19 com deslocamento Simplex 3D procedural em React Three Fiber, ticker desacoplado do Lenis e GSAP ScrollTrigger.",
+        proves:
+          "Capacidade de projetar e construir experiências interativas de nível internacional sem dependência de UI kits pré-fabricados.",
+      },
+      complexity: { ui: 5, motion: 5, threeD: 4, backend: 0 },
+    },
+    {
+      slug: "/Valmont",
+      category: "Alta Barbearia & Clube",
+      name: "Valmont Barbearia",
+      description:
+        "Landing page de alta conversão para barbearia premium e clube por assinatura com tema claro/escuro, simulador de economia e agendamento em 3 passos.",
+      accent: "#c8963e",
+      accentDim: "rgba(200,150,62,0.08)",
+      accentBorder: "rgba(200,150,62,0.28)",
+      accentGlow: "rgba(200,150,62,0.22)",
+      tag: "BARBER",
+      dot: "#c8963e",
+      extras: [{ label: "Agendamento", href: "/Valmont#agendamento" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "SEO Schema",
+        "LocalStorage",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Motion"],
+      preview: "atelier",
+      objective:
+        "Construir um funil duplo de alta conversão: atração de novos clientes com primeira visita VIP e retenção contínua via clube de assinatura recorrente.",
+      interaction:
+        "Alternador fluido de tema claro/escuro, calculadora interativa de economia do plano, agendamento expresso com mensagem formatada para WhatsApp e status em tempo real.",
+      role: "Desenvolvimento frontend avant-garde, copywriting comercial e arquitetura de conversão",
+      proof:
+        "Landing page completa com metadados SEO, schema LocalBusiness estruturado, Phosphor Icons e design responsivo impecável.",
+      strength: "Design premium de alta conversão & modelo de assinatura",
+      outcome:
+        "Demonstra habilidade em unir direção de arte refinada (estilo atelier de luxo) com psicologia de vendas e mecânicas de retenção recorrente.",
+      caseStudy: {
+        challenge:
+          "Transformar a experiência tradicional de barbearia em um clube privado altamente desejável, com foco em previsibilidade de receita.",
+        design:
+          "Tipografia romana cinzelada combinada com grotesca moderna, paleta âmbar e carvão obsidiana, capítulos numerados e fotografia contextual autêntica.",
+        technical:
+          "Desenvolvido com React 19, variáveis CSS para duplo tema sem reflow, validação em tempo real e integração direta com WhatsApp concierge.",
+        proves:
+          "Domínio completo de produto digital, direção de arte para marcas de alto padrão e engenharia frontend de alta performance.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
+    },
+    {
+      slug: "/LexDossier",
+      category: "LegalTech / Inteligência Paralegal",
+      name: "Helena Prado • LexDossier",
+      description:
+        "Portfólio de alta performance e landing page de retainer para paralegal sênior, com simulador de diligências em tempo real, desclassificação de dossiês e 100% responsivo para mobile.",
+      accent: "#38bdf8",
+      accentDim: "rgba(56,189,248,0.08)",
+      accentBorder: "rgba(56,189,248,0.28)",
+      accentGlow: "rgba(56,189,248,0.22)",
+      tag: "PARALEGAL",
+      dot: "#38bdf8",
+      extras: [{ label: "Simulador", href: "/LexDossier#simulador" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "Framer Motion",
+        "SEO Schema",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Compliance", "Motion"],
+      preview: "compliance",
+      objective:
+        "Converter sócios de escritórios e departamentos jurídicos em clientes de diligências avulsas e assinantes de retainer mensal.",
+      interaction:
+        "Utilitário interativo de diligências acima da dobra, tarjas de sigilo com revelação interativa, seletor de tema claro/escuro infalível e barra de conversão flutuante mobile.",
+      role: "Engenharia frontend avant-garde, copywriting jurídico B2B e arquitetura de conversão",
+      proof:
+        "Portfólio forense completo com estudos de caso desclassificados, duplo tema e marcação semântica JSON-LD.",
+      strength: "Arquitetura de conversão B2B & design editorial de alto padrão",
+      outcome:
+        "Demonstra habilidade em transformar o operacional burocrático em um centro de comando digital moderno, elegante e de altíssimo impacto.",
+      caseStudy: {
+        challenge:
+          "Transmitir senioridade técnica e segurança jurídica em operações societárias, unindo atração de atos avulsos com contratos contínuos de retainer.",
+        design:
+          "Estética de dossiê forense desconstruído, tipografia com Fraunces e Plus Jakarta Sans, paleta cobalto e obsidiana com selos notariais.",
+        technical:
+          "Construído com React 19, cálculo comparativo de economia Retainer vs. CLT, navegação em chips mobile e touch targets ergonômicos.",
+        proves:
+          "Domínio completo de design systems especializados, psicologia de conversão B2B e performance mobile impecável.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
     },
   ],
   es: [
@@ -1280,6 +1530,131 @@ export const LOCALIZED_PROJECTS: Record<Locale, ProjectData[]> = {
           "Dominio de UI de producto, controles adaptables, estados de interacción y acabado visual para páginas comerciales.",
       },
       complexity: { ui: 5, motion: 3, threeD: 0, backend: 0 },
+    },
+    {
+      slug: "/AvantGarde",
+      category: "Avant-Garde / Ingeniería Creativa",
+      name: "Avant-Garde Architecture",
+      description:
+        "Máquina digital brutalista que integra tipografía de choque, física de inercia Lenis, cursor elástico con mezcla difference y distorsión procedural WebGL.",
+      accent: "#ff4a1c",
+      accentDim: "rgba(255,74,28,0.08)",
+      accentBorder: "rgba(255,74,28,0.28)",
+      accentGlow: "rgba(255,74,28,0.22)",
+      tag: "AVANT-GARDE",
+      dot: "#ff4a1c",
+      extras: [],
+      technologies: ["Next.js", "React Three Fiber", "GSAP ScrollTrigger", "Lenis", "Tailwind CSS"],
+      capabilities: ["3D", "WebGL", "Motion", "Editorial"],
+      preview: "spectral",
+      objective:
+        "Romper con las convenciones de kits de interfaz estándar mediante tipografía radical, inercia física y shaders WebGL.",
+      interaction:
+        "Revelación cinética de texto, cursor elástico con diferencia cromática y alineación de caos a orden con GSAP ScrollTrigger.",
+      role: "Desarrollo creativo, dirección de arte digital, shaders GLSL",
+      proof: "Página de aterrizaje brutalista de alta gama que combina física cinética y desplazamiento de vértices procedural en GPU.",
+      strength: "Ingeniería creativa avant-garde",
+      outcome:
+        "Demuestra maestría en shaders WebGL, coreografía avanzada en GSAP, inercia de desplazamiento y brutalismo refinado.",
+      caseStudy: {
+        challenge:
+          "Superar la monotonía de tarjetas redondeadas convencionales preservando precisión matemática y alto rendimiento.",
+        design:
+          "Colisión de serif clásico con grotesco condensado sobre una retícula asimétrica expuesta en carbón vegetal y hueso crudo.",
+        technical:
+          "Construido con React 19, Simplex Noise 3D en React Three Fiber, bucle sincronizado de Lenis y fijación por ScrollTrigger.",
+        proves:
+          "Capacidad para concebir e implementar experiencias web interactivas singulares sin recurrir a componentes genéricos.",
+      },
+      complexity: { ui: 5, motion: 5, threeD: 4, backend: 0 },
+    },
+    {
+      slug: "/Valmont",
+      category: "Alta Barbería & Club",
+      name: "Valmont Barber Club",
+      description:
+        "Página de aterrizaje de alta conversión para barbería premium y club de suscripción con tema claro/oscuro, simulador de ahorro y reserva en 3 pasos.",
+      accent: "#c8963e",
+      accentDim: "rgba(200,150,62,0.08)",
+      accentBorder: "rgba(200,150,62,0.28)",
+      accentGlow: "rgba(200,150,62,0.22)",
+      tag: "BARBER",
+      dot: "#c8963e",
+      extras: [{ label: "Agendamento", href: "/Valmont#agendamento" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "SEO Schema",
+        "LocalStorage",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Motion"],
+      preview: "atelier",
+      objective:
+        "Canalizar reservas inmediatas de nuevos clientes y fidelización continua mediante suscripciones mensuales al club.",
+      interaction:
+        "Cambio de tema claro/oscuro, simulador interactivo de planes, agenda en 3 pasos con envío directo a WhatsApp y estado en tiempo real.",
+      role: "Desarrollo frontend avant-garde, dirección de arte y arquitectura de conversión",
+      proof:
+        "Landing page completa con esquema SEO LocalBusiness, Phosphor Icons y diseño responsive.",
+      strength: "Diseño premium de alta conversión y suscripción recurrente",
+      outcome:
+        "Demuestra maestría en articular narrativa de lujo y estética editorial con herramientas prácticas de conversión comercial.",
+      caseStudy: {
+        challenge:
+          "Elevar la percepción de valor de una barbería y convertir clientes habituales en suscriptores recurrentes.",
+        design:
+          "Tipografía cincelada romana, acentos dorados y obsidiana profunda, estructura por capítulos y fotografía documental cuidada.",
+        technical:
+          "Construido con React 19, Next.js, Phosphor Icons, variables CSS dinámicas y schema semántico.",
+        proves:
+          "Capacidad para estructurar e implementar experiencias frontend sofisticadas con alto impacto de negocio.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
+    },
+    {
+      slug: "/LexDossier",
+      category: "LegalTech / Operaciones Paralegales",
+      name: "Helena Prado • LexDossier",
+      description:
+        "Portafolio de alto rendimiento y landing page de retainer para operaciones paralegales y societarias, con simulador interactivo y diseño móvil de nivel Awwwards.",
+      accent: "#38bdf8",
+      accentDim: "rgba(56,189,248,0.08)",
+      accentBorder: "rgba(56,189,248,0.28)",
+      accentGlow: "rgba(56,189,248,0.22)",
+      tag: "PARALEGAL",
+      dot: "#38bdf8",
+      extras: [{ label: "Simulador", href: "/LexDossier#simulador" }],
+      technologies: [
+        "Next.js",
+        "Phosphor Icons",
+        "Tailwind CSS",
+        "Framer Motion",
+        "SEO Schema",
+      ],
+      capabilities: ["Forms", "Product UI", "Editorial", "Compliance", "Motion"],
+      preview: "compliance",
+      objective:
+        "Convertir socios de bufetes y directores jurídicos en clientes de diligencias urgentes y contratos de retainer mensual.",
+      interaction:
+        "Simulador interactivo en cabecera, desenmascarado de cláusulas confidenciales, conmutador de tema claro/oscuro y barra de conversión móvil.",
+      role: "Desarrollo frontend avant-garde, narrativa jurídica de alto valor y UX de conversión",
+      proof:
+        "Portafolio forense con casos de estudio auditados, tema dual y schema estructurado para servicios profesionales.",
+      strength: "Conversión de servicios jurídicos B2B y diseño vanguardista",
+      outcome:
+        "Prueba de solvencia para elevar servicios tradicionales a experiencias digitales prémium con altísima tasa de respuesta móvil.",
+      caseStudy: {
+        challenge:
+          "Comunicar precisión quirúrgica en trámites notariales y societarios con un modelo de contratación mensual de alta fidelización.",
+        design:
+          "Retícula editorial asimétrica de dossiê confidencial, tipografía Fraunces y paleta de azul cobalto sobre carbón judicial.",
+        technical:
+          "Desarrollado en React 19, interacción fluida en Framer Motion, comparador de costes en tiempo real y optimización táctil móvil.",
+        proves:
+          "Capacidad integral para crear productos web comerciales memorables con foco en usabilidad para reclutadores y socios.",
+      },
+      complexity: { ui: 5, motion: 4, threeD: 0, backend: 0 },
     },
   ],
 };

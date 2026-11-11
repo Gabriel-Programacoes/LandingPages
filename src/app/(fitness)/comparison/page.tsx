@@ -1,5 +1,7 @@
 "use client";
 
+import MiniHubMenu from "@/components/MiniHubMenu";
+
 // ─── Liquid Glass — Side-by-side comparison ──────────────────────────────────
 // Left  : Original open-source demo (static feTurbulence, photo bg, pure CSS)
 // Right : Densify implementation  (animated feTurbulence, gradient orbs, .densify-lg)
@@ -10,6 +12,7 @@
 export default function ComparisonPage() {
   return (
     <main className="min-h-screen bg-[#0d1525] text-black py-20 px-6 font-archivo">
+      <MiniHubMenu />
 
       {/* ── Local SVG: original demo filter (static, scale=77) ── */}
       <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden>

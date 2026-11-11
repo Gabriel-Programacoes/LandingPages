@@ -23,6 +23,9 @@
 .turbo/
 .cache/
 .eslintcache
+/*-desktop.png
+/*-mobile.png
+/shot-*.png
 
 # Logs
 npm-debug.log*
@@ -60,6 +63,10 @@ Thumbs.db
 # Local AI tooling
 .agents
 .claude
+.gemini
+.antigravity
+.projectmem
+.codegraph
 AGENTS.md
 CLAUDE.md
 skills-lock.json

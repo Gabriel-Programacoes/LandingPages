@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "project": "LexDossier",
+  "archetype": "Asymmetric Split Dossier",
+  "updatedAt": "2026-11-10",
+  "fonts": ["Instrument Serif", "Plus Jakarta Sans", "JetBrains Mono"],
+  "tokens": {"--font-mono": "var(--font-lex-mono)"},
+  "themeContract": {
+    "source": "lex-dossier.css",
+    "default": "light",
+    "note": "Theme-scoped values are intentional. The continuity scanner does not distinguish CSS selectors; validate light and dark values against REBUILD_SPEC.md section 3.1.",
+    "light": {
+    "--surface-sunken": "oklch(93% .014 84.6)",
+    "--surface-canvas": "oklch(96.5% .009 84.6)",
+    "--surface-panel": "oklch(98.5% .005 84.6)",
+    "--surface-raised": "oklch(100% 0 84.6)",
+    "--surface-highlight-amber": "oklch(91% .092 86)",
+    "--surface-stamp-tint": "oklch(94.5% .025 28)",
+    "--border-subtle": "oklch(86.5% .014 84.6)",
+    "--border-strong": "oklch(24% .015 84.6)",
+    "--text-primary": "oklch(16% .012 84.6)",
+    "--text-secondary": "oklch(38% .015 84.6)",
+    "--text-tertiary": "oklch(54% .012 84.6)",
+    "--accent-vermilion": "oklch(48% .185 27.5)",
+    "--accent-ultramarine": "oklch(32% .095 255)",
+    "--accent-emerald-seal": "oklch(42% .095 160)"
+    },
+    "dark": {
+      "--surface-sunken": "oklch(13% .010 75)",
+      "--surface-canvas": "oklch(16.5% .012 75)",
+      "--surface-panel": "oklch(20.5% .014 75)",
+      "--surface-raised": "oklch(24% .016 75)",
+      "--surface-highlight-amber": "oklch(28% .055 78)",
+      "--surface-stamp-tint": "oklch(22% .045 28)",
+      "--border-subtle": "oklch(28% .014 75)",
+      "--border-strong": "oklch(78% .025 80)",
+      "--text-primary": "oklch(95% .008 84.6)",
+      "--text-secondary": "oklch(76% .012 84.6)",
+      "--text-tertiary": "oklch(58% .012 84.6)",
+      "--accent-vermilion": "oklch(68% .175 28)",
+      "--accent-ultramarine": "oklch(74% .110 250)",
+      "--accent-emerald-seal": "oklch(72% .120 160)"
+    }
+  },
+  "components": []
+}

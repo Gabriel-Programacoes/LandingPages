@@ -2,7 +2,7 @@
 
 # ✦ LANDING PAGE HUB
 
-### Sete universos visuais. Um laboratório de frontend.
+### Dez universos visuais. Um laboratório de frontend.
 
 Coleção de landing pages autorais construída para explorar direção de arte,
 interfaces de produto, motion, formulários e experiências WebGL.
@@ -32,9 +32,9 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 
 <table>
 <tr>
-<td align="center"><strong>07</strong><br/><sub>PROJETOS</sub></td>
+<td align="center"><strong>10</strong><br/><sub>PROJETOS</sub></td>
 <td align="center"><strong>09</strong><br/><sub>CAPACIDADES</sub></td>
-<td align="center"><strong>06</strong><br/><sub>PREVIEWS AUTORAIS</sub></td>
+<td align="center"><strong>09</strong><br/><sub>PREVIEWS AUTORAIS</sub></td>
 <td align="center"><strong>01</strong><br/><sub>HUB INTERATIVO</sub></td>
 </tr>
 </table>
@@ -118,11 +118,42 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 <a href="./src/app/(saas)/Nexa/README.md">Documentação</a>
 </td>
 <td width="50%" valign="top">
+<h3>⚡ Avant-Garde</h3>
+<p><strong>CREATIVE ENGINEERING · BRUTALISM</strong></p>
+<p>Portfólio de engenharia criativa com física viscoelástica Lenis, shaders GLSL 3D Simplex e cursor elástico reativo.</p>
+<p><code>Three.js</code> <code>GLSL Shaders</code> <code>GSAP</code></p>
+<a href="https://landingpages-hub.vercel.app/AvantGarde">Abrir projeto ↗</a> ·
+<a href="./src/app/(avant-garde)/AvantGarde/README.md">Documentação</a>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3>💈 Valmont Barber Club</h3>
+<p><strong>LUXURY GROOMING · CONFRARIA</strong></p>
+<p>Alta barbearia nos Jardins com dual-theme claro/escuro, comanda de rituais e simulador de economia para clube de assinatura.</p>
+<p><code>Dual-Theme</code> <code>Calculator</code> <code>Framer Motion</code></p>
+<a href="https://landingpages-hub.vercel.app/Valmont">Abrir projeto ↗</a> ·
+<a href="./src/app/(barbearia)/Valmont/README.md">Documentação</a>
+</td>
+<td width="50%" valign="top">
+<h3>⚖️ Helena Prado • LexDossier</h3>
+<p><strong>LEGALTECH · PARALEGAL OPS</strong></p>
+<p>Caderno de diligência notarial e autos folheáveis sob diretriz avant-garde --wild, com split layout, balanço e calculadora B2B.</p>
+<p><code>Avant-Garde --wild</code> <code>Light-First</code> <code>Split Dossier</code></p>
+<a href="https://landingpages-hub.vercel.app/LexDossier">Abrir projeto ↗</a> ·
+<a href="./src/app/(paralegal)/LexDossier/README.md">Documentação</a>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 <h3>↗ Nexa / Contato</h3>
 <p><strong>INTERNAL PAGE · LEAD FLOW</strong></p>
 <p>Formulário responsivo que estrutura os dados do lead e transfere a conversa para o WhatsApp com mensagem pré-preenchida.</p>
 <p><code>Forms</code> <code>WhatsApp</code> <code>Responsive</code></p>
 <a href="https://landingpages-hub.vercel.app/Nexa/contato">Abrir contato ↗</a>
+</td>
+<td width="50%" valign="top">
+<!-- Reservado para novos experimentos -->
 </td>
 </tr>
 </table>
@@ -143,6 +174,9 @@ caso, tecnologias e indicadores de complexidade para cada trabalho.
 | Cinematic Ink | ●●●●● | ●●●●○ | ○○○○○ | ○○○○○ | Experiência editorial |
 | Densify | ●●●●● | ●●●○○ | ○○○○○ | ○○○○○ | Produto interativo |
 | Nexa | ●●●●● | ●●●○○ | ○○○○○ | ●○○○○ | Funil SaaS multipágina |
+| Avant-Garde | ●●●●● | ●●●●● | ●●●●● | ○○○○○ | Shaders GLSL e física inercial |
+| Valmont | ●●●●● | ●●●●○ | ○○○○○ | ○○○○○ | Alta barbearia e assinatura |
+| LexDossier | ●●●●● | ●●●●○ | ○○○○○ | ○○○○○ | Dossiê probatório e split layout |
 
 ---
 
@@ -170,11 +204,14 @@ landing-page-hub/
 │   │   ├── page.tsx                   # Entrada do Hub
 │   │   ├── layout.tsx                 # Fontes globais e Analytics
 │   │   ├── (atelier)/                 # Sculpted Silence
+│   │   ├── (avant-garde)/             # Avant-Garde Architecture
+│   │   ├── (barbearia)/               # Valmont Barber Club
 │   │   ├── (books)/                   # Cinematic Ink
 │   │   ├── (compliance)/              # LegisFlow
 │   │   ├── (engineering)/             # Drafted Obsidian
 │   │   ├── (fitness)/                 # Densify + Comparison
 │   │   ├── (immersive)/               # Spectral Core
+│   │   ├── (paralegal)/               # LexDossier
 │   │   └── (saas)/                    # Nexa + página de contato
 │   ├── components/
 │   │   ├── hub/                       # Galeria e previews
